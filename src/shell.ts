@@ -9,6 +9,7 @@ import '@vandeurenglenn/lite-elements/icon-set.js'
 import '@vandeurenglenn/flex-elements/it.js'
 import '@vandeurenglenn/flex-elements/row.js'
 import './ui/header.js'
+import './ui/drawer.js'
 import './custom-hover-menu.js'
 import icons from './icons.js'
 import Router from './routing.js'
@@ -50,6 +51,16 @@ export class PoHoWebShell extends LiteElement {
         width: 32px;
         height: 32px;
       }
+
+      drawer-element custom-hover-menu {
+        align-items: flex-start;
+      }
+      @media (min-width: 960px) {
+        drawer-element {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
     `
   ]
 
@@ -57,8 +68,8 @@ export class PoHoWebShell extends LiteElement {
     location.hash = Router.bang(detail)
   }
 
-  @query('.menu')
-  accessor selector: CustomSelector
+  @query('drawer-element')
+  accessor drawer
 
   @query('custom-pages')
   accessor pages: CustomPages
@@ -93,8 +104,16 @@ export class PoHoWebShell extends LiteElement {
     }
   }
 
-  firstRender() {
+  _drawerOpen = ({ detail }) => {
+    console.log(detail)
+
+    if (detail) this.drawer.open = true
+    else this.drawer.open = false
+  }
+
+  connectedCallback() {
     this.router = new Router(this)
+    document.addEventListener('drawer-open', this._drawerOpen)
   }
 
   render() {
@@ -145,6 +164,61 @@ export class PoHoWebShell extends LiteElement {
           <custom-hover-menu-item name="Contact"></custom-hover-menu-item>
         </flex-row>
       </header-element>
+
+      <drawer-element>
+        <custom-hover-menu-item
+          type="drawer"
+          name="home"></custom-hover-menu-item>
+
+        <custom-hover-menu-item
+          type="drawer"
+          name="Organisatie"></custom-hover-menu-item>
+
+        <custom-hover-menu
+          type="drawer"
+          name="Praktisch">
+          <custom-hover-menu-item
+            slot="sub-menu"
+            type="drawer"
+            name="voorbereiding"></custom-hover-menu-item>
+          <custom-hover-menu-item
+            slot="sub-menu"
+            type="drawer"
+            name="trainingsdagen"></custom-hover-menu-item>
+        </custom-hover-menu>
+
+        <custom-hover-menu-item
+          type="drawer"
+          name="Missie & Visie"></custom-hover-menu-item>
+
+        <custom-hover-menu
+          type="drawer"
+          name="informatie">
+          <custom-hover-menu-item
+            slot="sub-menu"
+            type="drawer"
+            name="Slipkettingen"></custom-hover-menu-item>
+          <custom-hover-menu-item
+            slot="sub-menu"
+            type="drawer"
+            name="Broodfok"></custom-hover-menu-item>
+          <custom-hover-menu-item
+            slot="sub-menu"
+            type="drawer"
+            name="Weetjes"></custom-hover-menu-item>
+          <custom-hover-menu-item
+            slot="sub-menu"
+            type="drawer"
+            name="[TEST]Sociaal gedrag"></custom-hover-menu-item>
+        </custom-hover-menu>
+
+        <custom-hover-menu-item
+          type="drawer"
+          name="Thema-avonden"></custom-hover-menu-item>
+        <custom-hover-menu-item
+          type="drawer"
+          name="Contact"></custom-hover-menu-item>
+      </drawer-element>
 
       <custom-pages attr-for-selected="route">
         <loading-view route="loading"> </loading-view>
