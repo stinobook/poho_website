@@ -1,4 +1,5 @@
 import { LiteElement, html, css, customElement, property } from '@vandeurenglenn/lite'
+import '@vandeurenglenn/lite-elements/icon-button.js'
 
 @customElement('header-element')
 export class HeaderElement extends LiteElement {
@@ -20,11 +21,33 @@ export class HeaderElement extends LiteElement {
         color: var(--md-sys-color-on-surface-container-high);
         border-radius: var(--md-sys-shape-corner-large);
       }
+
+      custom-icon-button {
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+      }
+
+      @media (max-width: 959px) {
+        custom-icon-button {
+          position: initial;
+          opacity: 1;
+          pointer-events: auto;
+        }
+        [name='nav-bar']::slotted(*) {
+          opacity: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+      }
     `
   ]
 
   render() {
     return html`
+      <custom-icon-button
+        icon="menu"
+        @click=${() => document.dispatchEvent(new CustomEvent('drawer-open', { detail: true }))}></custom-icon-button>
       <slot></slot>
       <flex-it></flex-it>
       <slot name="nav-bar"></slot>
