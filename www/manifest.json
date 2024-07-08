@@ -1,0 +1,37 @@
+{
+  "name": "PoHo",
+  "short_name": "PoHo",
+  "theme_color": "#6A3DE8",
+  "background_color": "#fff",
+  "display": "standalone",
+  "orientation": "any",
+  "scope": "/poho_kassa",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "assets/icons/icon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
