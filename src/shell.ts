@@ -1,11 +1,15 @@
-import { html, css, LiteElement, query, property } from '@vandeurenglenn/lite'
+import { html, css, LiteElement, query, property, queryAll } from '@vandeurenglenn/lite'
 import { customElement } from 'lit/decorators.js'
+import '@vandeurenglenn/lite-elements/pages.js'
 import '@vandeurenglenn/lite-elements/theme.js'
 import '@vandeurenglenn/lite-elements/selector.js'
-import '@vandeurenglenn/lite-elements/pages.js'
-import '@vandeurenglenn/lite-elements/menu.js'
 import '@vandeurenglenn/lite-elements/list-item.js'
 import '@vandeurenglenn/lite-elements/icon.js'
+import '@vandeurenglenn/lite-elements/icon-set.js'
+import '@vandeurenglenn/flex-elements/it.js'
+import '@vandeurenglenn/flex-elements/row.js'
+import './ui/header.js'
+import './custom-hover-menu.js'
 import icons from './icons.js'
 import Router from './routing.js'
 import type { CustomPages, CustomSelector } from './component-types.js'
@@ -17,12 +21,19 @@ export class PoHoWebShell extends LiteElement {
   router: Router
   static styles = [
     css`
+      custom-pages {
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
       :host {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         box-sizing: border-box;
         background: var(--md-sys-color-background);
         color: var(--md-sys-color-on-background);
+        height: 100%;
+        width: 100%;
       }
       ::-webkit-scrollbar {
         width: 8px;
@@ -34,132 +45,16 @@ export class PoHoWebShell extends LiteElement {
         border-radius: var(--md-sys-shape-corner-extra-large);
         box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
       }
-      #container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100vh;
-        flex-direction: column;
-      }
-      span {
-        cursor: pointer;
-        pointer-events:none;
-      }
-      li {
-        list-style: none;
-      }
-      li .custom-selected {
-        background: var(--md-sys-color-secondary-container);
-        color: var(--md-sys-color-on-secondary-container);
-      }
-      .navbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px;
-        background-color: var(--md-sys-color-surface-variant);
-        color: var(--md-sys-color-on-surface-variant);
-        width:100%;
-      }
       .logo {
-        background: url('./assets/icons/icon-32x32.png') no-repeat;
+        background: url('./assets/icons/icon-32x32.png');
         width: 32px;
         height: 32px;
       }
-      .menu {
-        display: flex;
-        gap: 1em;
-        font-size: 18px;
-      }
-      .menu li:hover {
-        background-color: var(--md-sys-color-outline);
-        border-radius: 5px;
-        transition: 0.3s ease;
-      }
-      .menu li {
-        padding: 5px 14px;
-        display: inline;
-      }
-      .submenu {
-        position: relative;
-      }
-      .dropdown {
-        background-color: rgb(1, 139, 139);
-        padding: 1em 0;
-        position: absolute;
-        display: none;
-        border-radius: 8px;
-        top: 35px;
-      }
-      .dropdown li + li {
-        margin-top: 10px;
-      }
-      .dropdown li {
-        padding: 0.5em 1em;
-        width: 8em;
-        text-align: center;
-      }
-      .dropdown li:hover {
-        background-color: #4c9e9e;
-      }
-      .submenu:hover .dropdown {
-        display: block;
-      }
-      input[type=checkbox] {
-        display: none;
-      } 
-      .hamburger {
-        display: none;
-        font-size: 24px;
-        user-select: none;
-      }
-      @media (max-width: 768px) {
-        .menu {
-           display:none;
-           position: absolute;
-           background-color:teal;
-           right: 0;
-           left: 0;
-           text-align: center;
-           padding: 16px 0;
-         }
-       
-         .menu li:hover {
-           display: inline-block;
-           background-color:#4c9e9e;
-           transition: 0.3s ease;
-         }
-       
-         .menu li + li {
-           margin-top: 12px;
-         }
-       
-         input[type=checkbox]:checked ~ .menu {
-           display: block;
-         }
-       
-         .hamburger {
-           display: block;
-         }
-       
-         .dropdown {
-           left: 50%;
-           top: 30px;
-           transform: translateX(35%);
-         }
-       
-         .dropdown li:hover {
-           background-color: #4c9e9e;
-         }
-       }
-        
     `
   ]
 
   selectorSelected({ detail }: CustomEvent) {
-    console.log(detail)
-    location.hash = Router.bang(detail.getAttribute('route'))
+    location.hash = Router.bang(detail)
   }
 
   @query('.menu')
@@ -168,70 +63,93 @@ export class PoHoWebShell extends LiteElement {
   @query('custom-pages')
   accessor pages: CustomPages
 
+  @queryAll('custom-hover-menu')
+  accessor customHoverMenus
+
+  @queryAll('custom-hover-menu-item')
+  accessor customHoverMenuItems
 
   async select(selected) {
-    this.selector.select(selected)
+    await this.pages.rendered
     this.pages.select(selected)
+
+    for (const item of this.customHoverMenus) {
+      if (item.classList.contains('custom-selected')) item.classList.remove('custom-selected')
+      const menuItem = item.shadowRoot.querySelector('custom-hover-menu-item')
+      const _selected = item.getAttribute('route') ?? item.getAttribute('name')
+      if (menuItem.classList.contains('custom-selected') && _selected !== selected)
+        menuItem.classList.remove('custom-selected')
+    }
+    for (const item of this.customHoverMenuItems) {
+      const _selected = item.getAttribute('route') ?? item.getAttribute('name')
+      if (item.classList.contains('custom-selected') && _selected !== selected) item.classList.remove('custom-selected')
+
+      if (_selected === selected) {
+        item.classList.add('custom-selected')
+        if (item.getAttribute('slot') === 'sub-menu') {
+          item.parentElement.classList.add('custom-selected')
+        }
+      }
+    }
   }
 
-  async connectedCallback() {
+  firstRender() {
     this.router = new Router(this)
   }
 
   render() {
     return html`
-      <style>
-      :host {
-        display: block;
-        inset: 0;
-        position: relative;
-        height: 100%;
-        width: 100%;
-      }
-        custom-pages {
-          width: 100%;
-          height: 100%;
-          display: flex;
-        }
-      </style>
       <!-- just cleaner -->
       ${icons}
       <!-- see https://vandeurenglenn.github.io/custom-elements/ -->
-      <custom-theme loadFont="false"></custom-theme>
-      <div id="container">
-        <nav class="navbar">
-          <div class="logo" route="home"></div>
-          <ul class="nav-links">
-            <input type="checkbox" id="checkbox_toggle" />
-            <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-            <div class="menu" attr-for-selected="route" @selected=${this.selectorSelected.bind(this)}>
-              <li route="home"><span>Home</span></li>
-              <li route="home1"><span>Organisatie</span></li>
-              <li route="home" class="submenu"><span>Praktisch</span>
-                <ul class="dropdown">
-                  <li route="home"><span>Voorbereiding</span></li>
-                  <li route="home"><span>Trainingsdagen</span></li>
-                </ul>
-              </li>
-              <li route="home"><span>Missie & Visie</span></li>
-              <li route="home" class="submenu"><span>Informatie</span>
-                <ul class="dropdown">
-                  <li route="home2"><span>Slipkettingen</span></li>
-                  <li route="home"><span>Broodfok</span></li>
-                  <li route="home"><span>Weetjes</span></li>
-                  <li route="home"><span>[TEST]Sociaal gedrag</span></li>
-                </ul>
-              </li>
-              <li route="home"><span>Thema-avonden</span></li>
-              <li route="home"><span>Contact</span></li>
-            </div>
-          </ul>
-        </nav>
-        <custom-pages attr-for-selected="route">
-          <loading-view route="loading"> </loading-view>
-          <home-view route="home"> </home-view>
-        </custom-pages>
-      </div>
+      <custom-theme .loadFont=${false}></custom-theme>
+      <header-element>
+        <div
+          class="logo"
+          route="home"></div>
+
+        <flex-it></flex-it>
+
+        <flex-row slot="nav-bar">
+          <custom-hover-menu-item name="home"></custom-hover-menu-item>
+
+          <custom-hover-menu-item name="Organisatie"></custom-hover-menu-item>
+
+          <custom-hover-menu name="Praktisch">
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="voorbereiding"></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="trainingsdagen"></custom-hover-menu-item>
+          </custom-hover-menu>
+
+          <custom-hover-menu-item name="Missie & Visie"></custom-hover-menu-item>
+
+          <custom-hover-menu name="informatie">
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Slipkettingen"></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Broodfok"></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Weetjes"></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="[TEST]Sociaal gedrag"></custom-hover-menu-item>
+          </custom-hover-menu>
+
+          <custom-hover-menu-item name="Thema-avonden"></custom-hover-menu-item>
+          <custom-hover-menu-item name="Contact"></custom-hover-menu-item>
+        </flex-row>
+      </header-element>
+
+      <custom-pages attr-for-selected="route">
+        <loading-view route="loading"> </loading-view>
+        <home-view route="home"> </home-view>
+      </custom-pages>
     `
   }
 }

@@ -7,11 +7,11 @@ export default class Router {
     this.host = host
 
     globalThis.onhashchange = this.#onhashchange
-    console.log(location.hash)
 
     if (!location.hash) {
       location.hash = Router.bang('home')
-    } else this.#onhashchange()
+    }
+    this.#onhashchange()
   }
 
   static bang(route: string) {
