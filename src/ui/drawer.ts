@@ -16,7 +16,7 @@ export class DrawerElement extends LiteElement {
         background-color: var(--md-sys-color-surface-container-high);
         color: var(--md-sys-color-on-surface-container-high);
         height: 100%;
-        width: 240px;
+        width: 100%;
         position: fixed;
         opacity: 0;
         pointer-events: none;

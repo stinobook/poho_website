@@ -20,6 +20,8 @@ export default html`
       <span name="menu">@symbol-menu</span>
       <span name="menu_open">@symbol-menu_open</span>
       <span name="home">@symbol-home</span>
+      <span name="check">@symbol-check</span>
+      <span name="pen">@symbol-edit_note</span>
     </template>
   </custom-icon-set>
 `

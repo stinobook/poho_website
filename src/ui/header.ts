@@ -28,7 +28,7 @@ export class HeaderElement extends LiteElement {
         position: absolute;
       }
 
-      @media (max-width: 959px) {
+      @media (max-width: 1280px) {
         custom-icon-button {
           position: initial;
           opacity: 1;

@@ -47,15 +47,21 @@ export class PoHoWebShell extends LiteElement {
         box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
       }
       .logo {
-        background: url('./assets/icons/icon-32x32.png');
-        width: 32px;
+        background: url('./assets/icons/icon-32x32.png') no-repeat;
+
+      }
+      .logo h1 {
+        font-size: 20px;
+        white-space: nowrap;
+        min-width: fit-content;
+        margin: 0 0 0 44px;
         height: 32px;
       }
 
       drawer-element custom-hover-menu {
         align-items: flex-start;
       }
-      @media (min-width: 960px) {
+      @media (min-width: 1280px) {
         drawer-element {
           opacity: 0;
           pointer-events: none;
@@ -125,54 +131,54 @@ export class PoHoWebShell extends LiteElement {
       <header-element>
         <div
           class="logo"
-          route="home"></div>
+          route="home"><h1>VZW Hondenschool PoHo</h1></div>
 
         <flex-it></flex-it>
 
         <flex-row slot="nav-bar">
-          <custom-hover-menu-item name="home"></custom-hover-menu-item>
+          <custom-hover-menu-item name="Home" route="home"></custom-hover-menu-item>
 
-          <custom-hover-menu-item name="Organisatie"></custom-hover-menu-item>
+          <custom-hover-menu-item name="Organisatie" route="organisation"></custom-hover-menu-item>
 
           <custom-hover-menu name="Praktisch">
             <custom-hover-menu-item
               slot="sub-menu"
-              name="voorbereiding"></custom-hover-menu-item>
+              name="Voorbereiding" route="preparation"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
-              name="trainingsdagen"></custom-hover-menu-item>
+              name="Trainingsdagen" route="hours"></custom-hover-menu-item>
           </custom-hover-menu>
 
-          <custom-hover-menu-item name="Missie & Visie"></custom-hover-menu-item>
+          <custom-hover-menu-item name="Missie & Visie" route="mission"></custom-hover-menu-item>
 
-          <custom-hover-menu name="informatie">
+          <custom-hover-menu name="Informatie">
             <custom-hover-menu-item
               slot="sub-menu"
-              name="Slipkettingen"></custom-hover-menu-item>
+              name="Slipkettingen" route="slipchains"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
-              name="Broodfok"></custom-hover-menu-item>
+              name="Broodfok" route="puppymills"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
-              name="Weetjes"></custom-hover-menu-item>
+              name="Weetjes" route="facts"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
-              name="[TEST]Sociaal gedrag"></custom-hover-menu-item>
+              name="[TEST]Sociaal gedrag" route="test_socialbehavior"></custom-hover-menu-item>
           </custom-hover-menu>
 
-          <custom-hover-menu-item name="Thema-avonden"></custom-hover-menu-item>
-          <custom-hover-menu-item name="Contact"></custom-hover-menu-item>
+          <custom-hover-menu-item name="Thema-avonden" route="presentations"></custom-hover-menu-item>
+          <custom-hover-menu-item name="Contact" route="contact"></custom-hover-menu-item>
         </flex-row>
       </header-element>
 
       <drawer-element>
         <custom-hover-menu-item
           type="drawer"
-          name="home"></custom-hover-menu-item>
+          name="Home" route="home"></custom-hover-menu-item>
 
         <custom-hover-menu-item
           type="drawer"
-          name="Organisatie"></custom-hover-menu-item>
+          name="Organisatie" route="organisation"></custom-hover-menu-item>
 
         <custom-hover-menu
           type="drawer"
@@ -180,44 +186,44 @@ export class PoHoWebShell extends LiteElement {
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="voorbereiding"></custom-hover-menu-item>
+            name="voorbereiding" route="preparation"></custom-hover-menu-item>
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="trainingsdagen"></custom-hover-menu-item>
+            name="trainingsdagen" route="hours"></custom-hover-menu-item>
         </custom-hover-menu>
 
         <custom-hover-menu-item
           type="drawer"
-          name="Missie & Visie"></custom-hover-menu-item>
+          name="Missie & Visie" route="mission"></custom-hover-menu-item>
 
         <custom-hover-menu
           type="drawer"
-          name="informatie">
+          name="Informatie">
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="Slipkettingen"></custom-hover-menu-item>
+            name="Slipkettingen" route="slipchains"></custom-hover-menu-item>
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="Broodfok"></custom-hover-menu-item>
+            name="Broodfok" route="puppymills"></custom-hover-menu-item>
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="Weetjes"></custom-hover-menu-item>
+            name="Weetjes" route="facts"></custom-hover-menu-item>
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="[TEST]Sociaal gedrag"></custom-hover-menu-item>
+            name="[TEST]Sociaal gedrag" route="test_socialbehavior"></custom-hover-menu-item>
         </custom-hover-menu>
 
         <custom-hover-menu-item
           type="drawer"
-          name="Thema-avonden"></custom-hover-menu-item>
+          name="Thema-avonden" route="presentations"></custom-hover-menu-item>
         <custom-hover-menu-item
           type="drawer"
-          name="Contact"></custom-hover-menu-item>
+          name="Contact" route="contact"></custom-hover-menu-item>
       </drawer-element>
 
       <custom-pages attr-for-selected="route">
