@@ -60,82 +60,82 @@ export class OrganisationView extends LiteElement {
     </custom-tabs>
     <member-element
     group="bestuur"
-    image="../img/members/joke.webp"
+    image="./img/members/joke.webp"
     name="Joke De Swaef"
     title="Voorzitter"
     content="GSM: 0477/52 39 83"
     ></member-element>
     <member-element
     group="bestuur"
-    image="../img/members/raf.webp"
+    image="./img/members/raf.webp"
     name="Raf Van Hoyweghen"
     title="Penningmeester"
     content="GSM: 0497/84 20 38"
     ></member-element>
     <member-element
     group="bestuur"
-    image="../img/members/lieve.webp"
+    image="./img/members/lieve.webp"
     name="Lieve Boelaert"
     title="Secretaris"
     content="GSM: 0477/58 99 59"
     ></member-element>
     <member-element
     group="bestuur"
-    image="../img/members/stijn.webp"
+    image="./img/members/stijn.webp"
     name="Stijn Schepers"
     title="Bestuurslid"
     content="GSM: 0488/46 04 07"
     ></member-element>
     <member-element
     group="instructeurs"
-    image="../img/members/jokevdv.webp"
+    image="./img/members/jokevdv.webp"
     name="Joke VdV"
     title="Pups"
     class="hidden"
     ></member-element>
     <member-element
     group="instructeurs"
-    image="../img/members/emma.webp"
+    image="./img/members/emma.webp"
     name="Emma"
     title="Pups"
     class="hidden"
     ></member-element>
     <member-element
     group="instructeurs"
-    image="../img/members/vanessa.webp"
+    image="./img/members/vanessa.webp"
     name="Vanessa"
     title="Pubers"
     class="hidden"
     ></member-element>
     <member-element
     group="instructeurs"
-    image="../img/members/madeline.webp"
+    image="./img/members/madeline.webp"
     name="Madeline"
     title="Adjunct-hoofdinstructeur / allroundinstructeur recreanten"
     class="hidden"
     ></member-element>
     <member-element
     group="instructeurs"
-    image="../img/members/dirk.webp"
+    image="./img/members/dirk.webp"
     name="Dirk"
     title="Hoofdinstructeur / allroundinstructeur/welpenklas"
     class="hidden"
     ></member-element>
     <member-element
     group="medewerkers"
-    image="../img/logo.png"
+    image="./img/logo.png"
     name="Kristel"
     class="hidden"
     ></member-element>
     <member-element
     group="medewerkers"
-    image="../img/logo.png"
+    image="./img/logo.png"
     name="Ann"
     class="hidden"
     ></member-element>
     <member-element
     group="medewerkers"
-    image="../img/logo.png"
+    image="./img/logo.png"
     name="Tim"
     class="hidden"
     ></member-element>

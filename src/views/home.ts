@@ -41,14 +41,14 @@ export class HomeView extends LiteElement {
     return html`
     <flex-container>
       <post-element
-      image="../img/canvas.svg"
+      image="./img/canvas.svg"
       headline="Welkom!"
       content="Onze hondenschool bestaat meer dan 25 jaar en elke woensdag- en vrijdagavond geven wij gehoorzaamheidstrainingen.
       Doch merken wij dat er daarnaast nog enorm veel vragen zijn en dit is de reden waarom wij onderstaande thema avonden organiseren.
       Toekomstige hondeneigenaars of mensen die reeds een hond hebben dienen nog beter geïnformeerd te worden."
       ></post-element>
       <post-element
-      image="../img/thema-avonden.webp"
+      image="./img/thema-avonden.webp"
       headline="6 Thema-avonden"
       subline="Informatieavond over diverse onderwerpen"
       .content=${html`
@@ -71,7 +71,7 @@ export class HomeView extends LiteElement {
       `}
       ></post-element>
       <post-element
-      image="../img/QRtrooper.webp"
+      image="./img/QRtrooper.webp"
       headline="Trooper"
       subline="Gratis steun voor onze hondenschool dankzij online-shopping"
       .content=${html`
@@ -84,7 +84,7 @@ export class HomeView extends LiteElement {
       `}
       ></post-element>
       <post-element
-      image="../img/logo.png"
+      image="./img/logo.png"
       headline="Instructeur worden?"
       subline="Bel 0477/523983 (Joke De Swaef)"
       .content=${html`
