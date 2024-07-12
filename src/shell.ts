@@ -229,6 +229,7 @@ export class PoHoWebShell extends LiteElement {
       <custom-pages attr-for-selected="route">
         <loading-view route="loading"> </loading-view>
         <home-view route="home"> </home-view>
+        <organisation-view route="organisation"> </organisation-view>
       </custom-pages>
     `
   }
