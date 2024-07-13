@@ -9,27 +9,36 @@ export class DrawerElement extends LiteElement {
       :host {
         display: flex;
         flex-direction: column;
-        width: 100%;
-        height: 100px;
         box-sizing: border-box;
-        padding: 12px 24px;
+        padding: 0px 24px 12px;
         background-color: var(--md-sys-color-surface-container-high);
         color: var(--md-sys-color-on-surface-container-high);
         height: 100%;
         width: 100%;
         position: fixed;
-        opacity: 0;
         pointer-events: none;
+        transform:translateY(-125%);
+        transition: transform 0.5s ease-in-out;
+        z-index:1000;
       }
 
       :host([open]) {
-        opacity: 1;
         pointer-events: auto;
         z-index: 1000;
+        transition: transform 0.5s ease-in-out;
+        transform:translateY(0);
       }
 
+      .header {
+        height: 76px;
+        padding: 12px 0px;
+        display: flex;
+        align-items: center;
+        gap:12px;
+      }
       custom-icon-button {
-        pointer-events: none;
+        pointer-events: none !important;
+        z-index:0;
       }
       :host([open]) custom-icon-button {
         pointer-events: auto;
@@ -38,9 +47,10 @@ export class DrawerElement extends LiteElement {
   ]
 
   render() {
-    return html`<custom-icon-button
+    return html`<div class="header"><custom-icon-button
         icon="menu_open"
         @click=${() => document.dispatchEvent(new CustomEvent('drawer-open', { detail: false }))}></custom-icon-button>
-      <slot></slot> `
+        <slot name="logoname"></slot>
+        </div><slot></slot> `
   }
 }

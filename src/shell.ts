@@ -179,6 +179,10 @@ export class PoHoWebShell extends LiteElement {
       </header-element>
 
       <drawer-element>
+      <div slot="logoname"
+        class="logo"
+        route="home"><h1>PoHo</h1></div>
+
         <custom-hover-menu-item
           type="drawer"
           name="Home" route="home"></custom-hover-menu-item>

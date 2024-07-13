@@ -12,6 +12,7 @@ export class HeaderElement extends LiteElement {
         box-sizing: border-box;
         padding: 12px 24px;
         align-items: center;
+        gap:12px;
       }
 
       [name='nav-bar']::slotted(*) {
@@ -26,6 +27,7 @@ export class HeaderElement extends LiteElement {
         opacity: 0;
         pointer-events: none;
         position: absolute;
+        z-index:1;
       }
 
       @media (max-width: 1280px) {
