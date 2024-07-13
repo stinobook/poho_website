@@ -33,7 +33,7 @@ export class PoHoWebShell extends LiteElement {
         box-sizing: border-box;
         background: var(--md-sys-color-background);
         color: var(--md-sys-color-on-background);
-        height: 100%;
+        height: 100dvh;
         width: 100%;
       }
       ::-webkit-scrollbar {
@@ -71,6 +71,24 @@ export class PoHoWebShell extends LiteElement {
           opacity: 0;
           pointer-events: none;
         }
+      }
+      .footer {
+        z-index: 99;
+        background-color: var(--md-sys-color-background);
+      }
+      .footer small {
+        padding: 8px 12px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .footer small img {
+        width: 24px;
+        height: 24px;
+        padding: 0 8px;        
+      }
+      .sides {
+        flex-grow: 1;
+        flex-basis: 0;
       }
     `
   ]
@@ -242,6 +260,9 @@ export class PoHoWebShell extends LiteElement {
         <home-view route="home"> </home-view>
         <organisation-view route="organisation"> </organisation-view>
       </custom-pages>
+      <div class="footer">
+      <small><span class="sides">&copy; 2019-2024</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
+      </div>
     `
   }
 }
