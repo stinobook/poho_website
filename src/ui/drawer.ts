@@ -28,19 +28,19 @@ export class DrawerElement extends LiteElement {
         z-index: 1000;
       }
 
-      custom-icon {
+      custom-icon-button {
         pointer-events: none;
       }
-      :host([open]) custom-icon {
+      :host([open]) custom-icon-button {
         pointer-events: auto;
       }
     `
   ]
 
   render() {
-    return html`<custom-icon
+    return html`<custom-icon-button
         icon="menu_open"
-        @click=${() => document.dispatchEvent(new CustomEvent('drawer-open', { detail: false }))}></custom-icon>
+        @click=${() => document.dispatchEvent(new CustomEvent('drawer-open', { detail: false }))}></custom-icon-button>
       <slot></slot> `
   }
 }

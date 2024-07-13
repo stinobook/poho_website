@@ -58,6 +58,11 @@ export class PoHoWebShell extends LiteElement {
         height: 32px;
       }
 
+      header-element {
+        background-color: var(--md-sys-color-surface-container-high);
+        color: var(--md-sys-color-on-surface-container-high);
+      }
+
       drawer-element custom-hover-menu {
         align-items: flex-start;
       }
@@ -89,7 +94,6 @@ export class PoHoWebShell extends LiteElement {
   async select(selected) {
     await this.pages.rendered
     this.pages.select(selected)
-
     for (const item of this.customHoverMenus) {
       if (item.classList.contains('custom-selected')) item.classList.remove('custom-selected')
       const menuItem = item.shadowRoot.querySelector('custom-hover-menu-item')
@@ -105,6 +109,9 @@ export class PoHoWebShell extends LiteElement {
         item.classList.add('custom-selected')
         if (item.getAttribute('slot') === 'sub-menu') {
           item.parentElement.classList.add('custom-selected')
+          item && this.drawer.open === true ? this.drawer.open = false : '' 
+        } else {
+          this.drawer.open === true ? this.drawer.open = false : '' 
         }
       }
     }
@@ -131,7 +138,7 @@ export class PoHoWebShell extends LiteElement {
       <header-element>
         <div
           class="logo"
-          route="home"><h1>VZW Hondenschool PoHo</h1></div>
+          route="home"><h1>PoHo</h1></div>
 
         <flex-it></flex-it>
 

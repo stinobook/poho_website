@@ -20,11 +20,15 @@ export class CustomHoverMenu extends LiteElement {
 
       .sub-menu-container {
         padding-top: 12px;
-        opacity: 0;
+        overflow: hidden;
         pointer-events: none;
         z-index: 1000;
         position: absolute;
         top: 54px;
+        max-height: 0;
+        transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+        left: 50%;
+        transform: translatex(-50%);
       }
 
       .sub-menu {
@@ -39,8 +43,9 @@ export class CustomHoverMenu extends LiteElement {
       }
 
       :host(:hover) .sub-menu-container {
-        opacity: 1;
         pointer-events: auto;
+        max-height: 1000px;
+        transition: max-height 0.3s ease-in-out;
       }
 
       :host(.custom-selected) custom-hover-menu-item {
@@ -53,6 +58,12 @@ export class CustomHoverMenu extends LiteElement {
         top: 0;
         opacity: 1;
         pointer-events: auto;
+        left: 0%;
+        transform: translatex(0%);
+      }
+      :host([type='drawer']) .sub-menu-container {
+        left: 0%;
+        transform: translatex(0%);
       }
     `
   ]

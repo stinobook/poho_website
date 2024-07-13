@@ -89,6 +89,7 @@ export class PostElement extends LiteElement {
         img {
           margin: 0 auto;
           width: auto;
+          max-width: 100%;
         }
       }
     `
