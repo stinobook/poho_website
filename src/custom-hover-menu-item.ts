@@ -28,6 +28,9 @@ export class CustomHoverMenuItem extends LiteElement {
         box-sizing: border-box;
         cursor: pointer;
         border-radius: var(--md-sys-shape-corner-large);
+        width: 100%;
+        margin-bottom: 12px;
+        white-space: nowrap;
       }
 
       :host(:hover) {

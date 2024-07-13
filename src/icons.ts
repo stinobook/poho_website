@@ -22,6 +22,7 @@ export default html`
       <span name="home">@symbol-home</span>
       <span name="check">@symbol-check</span>
       <span name="pen">@symbol-edit_note</span>
+      <span name="groups">@symbol-groups</span>
     </template>
   </custom-icon-set>
 `

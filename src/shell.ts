@@ -168,7 +168,7 @@ export class PoHoWebShell extends LiteElement {
           <custom-hover-menu name="Praktisch">
             <custom-hover-menu-item
               slot="sub-menu"
-              name="Voorbereiding" route="preparation"></custom-hover-menu-item>
+              name="Voorlichting" route="preparation"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
               name="Trainingsdagen" route="hours"></custom-hover-menu-item>
@@ -186,6 +186,9 @@ export class PoHoWebShell extends LiteElement {
             <custom-hover-menu-item
               slot="sub-menu"
               name="Weetjes" route="facts"></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Spelen en spelletjes" route="toys"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
               name="[TEST]Sociaal gedrag" route="test_socialbehavior"></custom-hover-menu-item>
@@ -215,11 +218,11 @@ export class PoHoWebShell extends LiteElement {
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="voorbereiding" route="preparation"></custom-hover-menu-item>
+            name="Voorlichting" route="preparation"></custom-hover-menu-item>
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="trainingsdagen" route="hours"></custom-hover-menu-item>
+            name="Trainingsdagen" route="hours"></custom-hover-menu-item>
         </custom-hover-menu>
 
         <custom-hover-menu-item
@@ -244,6 +247,10 @@ export class PoHoWebShell extends LiteElement {
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
+            name="Spelen en spelletjes" route="toys"></custom-hover-menu-item>
+          <custom-hover-menu-item
+            slot="sub-menu"
+            type="drawer"
             name="[TEST]Sociaal gedrag" route="test_socialbehavior"></custom-hover-menu-item>
         </custom-hover-menu>
 
@@ -259,6 +266,8 @@ export class PoHoWebShell extends LiteElement {
         <loading-view route="loading"> </loading-view>
         <home-view route="home"> </home-view>
         <organisation-view route="organisation"> </organisation-view>
+        <preparation-view route="preparation"> </preparation-view>
+        <hours-view route="hours"> </hours-view>
       </custom-pages>
       <div class="footer">
       <small><span class="sides">&copy; 2019-2024</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>

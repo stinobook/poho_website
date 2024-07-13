@@ -15,19 +15,13 @@ export class PostElement extends LiteElement {
   @property()
   accessor content
 
-  onChange(propertyKey: string, value: any): void {
-    if (propertyKey === 'image') {
-      if (value) this.setAttribute('has-image', '')
-      else this.removeAttribute('has-image')
-    }
-  }
-
   static styles?: StyleList = [
     css`
       :host {
         border-radius: var(--md-sys-shape-corner-extra-large);
         background: var(--md-sys-color-surface-variant);
         color: var(--md-sys-color-on-surface-variant);
+        width: 100%;
       }
       :host * {
         box-sizing: border-box;
@@ -82,6 +76,12 @@ export class PostElement extends LiteElement {
       custom-button {
         margin-bottom: 12px;
       }
+      th {
+        text-align: left;
+      }
+      tr, td, th {
+        padding: 0 12px;
+      }
       @media (max-width: 640px) {
         .card {
           flex-direction: column;
@@ -97,7 +97,7 @@ export class PostElement extends LiteElement {
 
   _renderImage() {
     if (!this.image) return ''
-    return html` <img loading="lazy" src=${this.image} /> `
+    return html` <div class="img"><img loading="lazy" src=${this.image} /></div> `
   }
 
   _renderHeadline() {
@@ -118,9 +118,7 @@ export class PostElement extends LiteElement {
   render() {
     return html`
     <div class="card">
-      <div class="img">
         ${this._renderImage()}
-      </div>
       <div class="content">
         ${this._renderHeadline()} 
         ${this._renderSubline()}

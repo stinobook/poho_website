@@ -16,10 +16,10 @@ export class CustomHoverMenu extends LiteElement {
         position: relative;
         justify-content: flex-start;
         align-items: flex-end;
+        width:100%;
       }
 
       .sub-menu-container {
-        padding-top: 12px;
         overflow: hidden;
         pointer-events: none;
         z-index: 1000;
@@ -29,6 +29,7 @@ export class CustomHoverMenu extends LiteElement {
         transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
         left: 50%;
         transform: translatex(-50%);
+        white-space: nowrap;
       }
 
       .sub-menu {
@@ -60,6 +61,7 @@ export class CustomHoverMenu extends LiteElement {
         pointer-events: auto;
         left: 0%;
         transform: translatex(0%);
+        width:100%;
       }
       :host([type='drawer']) .sub-menu-container {
         left: 0%;
