@@ -25,7 +25,7 @@ export class MemberElement extends LiteElement {
   static styles?: StyleList = [
     css`
       :host {
-        border-radius: var(--md-sys-shape-corner-extra-large);
+        border-radius: var(--md-sys-shape-corner-medium);
         background: var(--md-sys-color-surface-variant);
         color: var(--md-sys-color-on-surface-variant);
       }

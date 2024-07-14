@@ -27,7 +27,7 @@ export class CustomHoverMenuItem extends LiteElement {
         height: 56px;
         box-sizing: border-box;
         cursor: pointer;
-        border-radius: var(--md-sys-shape-corner-large);
+        border-radius: var(--md-sys-shape-corner-medium);
         width: 100%;
         margin-bottom: 12px;
         white-space: nowrap;

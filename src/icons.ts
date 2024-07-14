@@ -23,6 +23,10 @@ export default html`
       <span name="check">@symbol-check</span>
       <span name="pen">@symbol-edit_note</span>
       <span name="groups">@symbol-groups</span>
+      <span name="language">@symbol-language</span>
+      <span name="cancel">@symbol-cancel</span>
+      <span name="info">@symbol-info</span>
+      <span name="close">@symbol-close</span>
     </template>
   </custom-icon-set>
 `

@@ -185,7 +185,7 @@ export class PoHoWebShell extends LiteElement {
               name="Broodfok" route="puppymills"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
-              name="Weetjes" route="facts"></custom-hover-menu-item>
+              name="Weetjes" route="info"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
               name="Spelen en spelletjes" route="toys"></custom-hover-menu-item>
@@ -243,7 +243,7 @@ export class PoHoWebShell extends LiteElement {
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="Weetjes" route="facts"></custom-hover-menu-item>
+            name="Weetjes" route="info"></custom-hover-menu-item>
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
@@ -268,6 +268,10 @@ export class PoHoWebShell extends LiteElement {
         <organisation-view route="organisation"> </organisation-view>
         <preparation-view route="preparation"> </preparation-view>
         <hours-view route="hours"> </hours-view>
+        <mission-view route="mission"> </mission-view>
+        <slipchains-view route="slipchains"> </slipchains-view>
+        <puppymills-view route="puppymills"> </puppymills-view>
+        <info-view route="info"> </info-view>
       </custom-pages>
       <div class="footer">
       <small><span class="sides">&copy; 2019-2024</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
