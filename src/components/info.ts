@@ -24,9 +24,9 @@ export class InfoElement extends LiteElement {
         color: var(--md-sys-color-on-surface-variant);
         display: flex;
         width: 100%;
-        max-width: 200px;
+        max-width: 250px;
         justify-content: center;
-        flex: 1;
+        flex: 1 1 100%;
       }
       .card:hover {
         background: var(--md-sys-color-outline-variant);
@@ -34,7 +34,7 @@ export class InfoElement extends LiteElement {
       }
       .modal {
         background: var(--md-sys-color-primary-container);
-        height: 1px;
+        height: 3px;
         overflow: hidden;
         position: fixed;
         top: 50%;
@@ -84,8 +84,8 @@ export class InfoElement extends LiteElement {
         transform: rotate(45deg);
         width: 100%;
       }
-        input:checked::after {
-          transform: rotate(-45deg);
+      input:checked::after {
+        transform: rotate(-45deg);
       }
       @keyframes showClose {
         99% {
@@ -97,12 +97,13 @@ export class InfoElement extends LiteElement {
       }
       .content {
         overflow: auto;
-        height: 100%;
+        height: calc(100% - 24px);
         padding: 12px;
       }
       .title {
-        padding-top: 30px;
-        display: block;
+        padding-top: 12px;
+        display: inline-block;
+        padding-bottom: 20px;
       }
       input:checked ~ .modal {
         height: 100%;
@@ -119,9 +120,9 @@ export class InfoElement extends LiteElement {
       }
       h1 {
         display: flex;
-        line-height: 1;
         margin: 0;
         font-size: 1.3rem;
+        flex: 1;
       }
       h2 {
         font-size: 1rem;
@@ -132,23 +133,10 @@ export class InfoElement extends LiteElement {
       p {
         position: relative;
         margin-bottom: 12px;
+        display: inline-block;
       }
     `
   ]
-
-  connectedCallback() {
-    this.shadowRoot.addEventListener('click', this.#clickHandler)
-  }
-  disconnectedCallback() {
-    this.shadowRoot.removeEventListener('click', this.#clickHandler)
-  }
-
-
-  #clickHandler = event => {
-    const dialog = this.shadowRoot.querySelector('custom-dialog');
-    console.log(dialog.open)
-    dialog.hasAttribute('open') ? dialog.open = false : dialog.open = !dialog.open
-  }
 
   _renderHeadline() {
     if (!this.headline) return ''
@@ -167,23 +155,25 @@ export class InfoElement extends LiteElement {
 
   _renderContent() {
     if (!this.content) return ''
-    return html`<p>${this.content}</p>`
+    return html`${this.content}`
   }
 
   render() {
     return html`
-      <input type='checkbox' id='modalbutton'/>
+    ${!this.content ? '' : html`<input type='checkbox' id='modalbutton'/>`}
       <label class="label" for='modalbutton'>
-        <h1>${this._renderHeadline()}
+        <h1>${this._renderHeadline()}<flex-it></flex-it>
         ${this._renderIcon()}</h1>
         ${this._renderSubline()}
       </label>
-    <div class="modal">
-      <div class="content">
-        <span class="title"><h1>${this._renderHeadline()}</h1></span>
-        ${this._renderContent()}
+    ${!this.content ? '' : html`
+      <div class="modal">
+        <div class="content">
+          <span class="title"><h1>${this._renderHeadline()}</h1></span>
+          ${this._renderContent()}
+        </div>
       </div>
-    </div>
+    `}
     `
   }
 }
