@@ -22,17 +22,12 @@ export class InfoView extends LiteElement {
         box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
       }
       flex-container {
-        flex-direction: row;
+        flex-flow: row wrap;
         max-width: 1024px;
         gap:12px;
         height:fit-content;
         margin: 0 auto;
-      }
-      post-element:nth-of-type(even) {
-        --flex-direction: row;
-      }
-      post-element:nth-of-type(odd) {
-        --flex-direction: row-reverse;
+        justify-content: center;
       }
     `
   ]
