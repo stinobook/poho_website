@@ -60,40 +60,10 @@ export class InfoElement extends LiteElement {
         border: 0;
         margin: 0;
         z-index: -1;
-        position:fixed;
+        position: absolute;
       }
       input:focus {
         outline: none;
-      } 
-      input:checked {
-        height: 30px;
-        position: fixed;
-        right: 20px;
-        top: 20px;
-        z-index: 1;
-        -webkit-appearance: none;
-        width: 30px;
-        animation: showClose 1s forwards;
-      }
-      input:checked::after, input:checked:before {
-        border-top: 1px solid var(--md-sys-color-on-primary-container);
-        content: '';
-        display: block;
-        position: absolute;
-        top: 50%;
-        transform: rotate(45deg);
-        width: 100%;
-      }
-      input:checked::after {
-        transform: rotate(-45deg);
-      }
-      @keyframes showClose {
-        99% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
       }
       .content {
         overflow: auto;
@@ -104,6 +74,17 @@ export class InfoElement extends LiteElement {
         padding-top: 12px;
         display: inline-block;
         padding-bottom: 20px;
+        width: 100%;
+      }
+      .closebutton {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      custom-icon {
+        --custom-icon-size: 32px;
       }
       input:checked ~ .modal {
         height: 100%;
@@ -169,7 +150,7 @@ export class InfoElement extends LiteElement {
     ${!this.content ? '' : html`
       <div class="modal">
         <div class="content">
-          <span class="title"><h1>${this._renderHeadline()}</h1></span>
+          <span class="title"><h1>${this._renderHeadline()}</h1><label for="modalbutton" class="closebutton"><custom-icon icon="close"></custom-icon></label></span>
           ${this._renderContent()}
         </div>
       </div>

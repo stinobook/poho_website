@@ -24,10 +24,11 @@ export class InfoView extends LiteElement {
         box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
       }
       flex-container {
+        position:relative;
         flex-flow: row wrap;
         max-width: 1024px;
         gap:12px;
-        max-height:100%;
+        height:100%;
         margin: 0 auto;
         justify-content: center;
         align-items:stretch;
