@@ -118,7 +118,7 @@ export class OrganisationView extends LiteElement {
     group="instructeurs"
     image="./img/members/dirk.webp"
     name="Dirk"
-    title="Hoofdinstructeur / allroundinstructeur/welpenklas"
+    title="Hoofdinstructeur / allroundinstructeur / welpenklas"
     class="hidden"
     ></member-element>
     <member-element
