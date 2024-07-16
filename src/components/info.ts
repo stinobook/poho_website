@@ -24,7 +24,7 @@ export class InfoElement extends LiteElement {
         color: var(--md-sys-color-on-surface-variant);
         display: flex;
         width: 100%;
-        max-width: 250px;
+        max-width: 240px;
         justify-content: center;
         flex: 1 1 100%;
       }
@@ -105,6 +105,10 @@ export class InfoElement extends LiteElement {
         margin: 0;
         font-size: 1.3rem;
         flex: 1;
+        word-break: break-word;
+        word-wrap: break-word;
+        max-width: 100%;
+        hyphens: auto;
       }
       h2 {
         font-size: 1rem;
