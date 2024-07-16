@@ -82,6 +82,7 @@ export class InfoElement extends LiteElement {
         position: absolute;
         right: 0;
         top: 0;
+        z-index: 100;
       }
       custom-icon {
         --custom-icon-size: 32px;
