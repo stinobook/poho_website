@@ -99,7 +99,7 @@ export class PreparationView extends LiteElement {
                   <li>Laat je hond er niet alleen mee spelen (niet alleen thuis, maar ook niet alleen op het terrein van de hondenschool: hier spelen we SAMEN).</li>
                   </ul>
                   <p>Check zeker ook: </p>
-      <custom-button type="filled" label="Spelen en spelletjes" @click=${() => location.hash = '!/toys'}>
+      <custom-button type="filled" label="Spelen en spelletjes" @click=${() => location.hash = '!/games'}>
       <span slot="icon"><custom-icon icon="check"></custom-icon></span>
       </custom-button>
                 `}

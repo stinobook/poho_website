@@ -188,10 +188,10 @@ export class PoHoWebShell extends LiteElement {
               name="Weetjes" route="info"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
-              name="Spelen en spelletjes" route="toys"></custom-hover-menu-item>
+              name="Spelen en spelletjes" route="games"></custom-hover-menu-item>
             <custom-hover-menu-item
               slot="sub-menu"
-              name="[TEST]Sociaal gedrag" route="test_socialbehavior"></custom-hover-menu-item>
+              name="Test Sociaal gedrag" @click=${() => window.open('./img/test_sociaal_gedrag.pdf', '_blank')}></custom-hover-menu-item>
           </custom-hover-menu>
 
           <custom-hover-menu-item name="Thema-avonden" route="presentations"></custom-hover-menu-item>
@@ -247,11 +247,11 @@ export class PoHoWebShell extends LiteElement {
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="Spelen en spelletjes" route="toys"></custom-hover-menu-item>
+            name="Spelen en spelletjes" route="games"></custom-hover-menu-item>
           <custom-hover-menu-item
             slot="sub-menu"
             type="drawer"
-            name="[TEST]Sociaal gedrag" route="test_socialbehavior"></custom-hover-menu-item>
+            name="Test Sociaal gedrag" @click=${() => window.open('./img/test_sociaal_gedrag.pdf', '_blank')}></custom-hover-menu-item>
         </custom-hover-menu>
 
         <custom-hover-menu-item
@@ -272,6 +272,7 @@ export class PoHoWebShell extends LiteElement {
         <slipchains-view route="slipchains"> </slipchains-view>
         <puppymills-view route="puppymills"> </puppymills-view>
         <info-view route="info"> </info-view>
+        <games-view route="games"> </games-view>
       </custom-pages>
       <div class="footer">
       <small><span class="sides">&copy; 2019-2024</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
