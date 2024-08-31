@@ -90,6 +90,10 @@ export class PoHoWebShell extends LiteElement {
         flex-grow: 1;
         flex-basis: 0;
       }
+      .signup {
+        background-color: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-primary);
+      }
     `
   ]
 
@@ -196,6 +200,7 @@ export class PoHoWebShell extends LiteElement {
 
           <custom-hover-menu-item name="Thema-avonden" route="presentations"></custom-hover-menu-item>
           <custom-hover-menu-item name="Contact" route="contact"></custom-hover-menu-item>
+          <custom-hover-menu-item class="signup" name="Inschrijven" route="signup"></custom-hover-menu-item>
         </flex-row>
       </header-element>
 
@@ -260,6 +265,10 @@ export class PoHoWebShell extends LiteElement {
         <custom-hover-menu-item
           type="drawer"
           name="Contact" route="contact"></custom-hover-menu-item>
+        <custom-hover-menu-item
+          class="signup"
+          type="drawer"
+          name="Inschrijven" route="signup"></custom-hover-menu-item>
       </drawer-element>
 
       <custom-pages attr-for-selected="route">
@@ -273,6 +282,8 @@ export class PoHoWebShell extends LiteElement {
         <puppymills-view route="puppymills"> </puppymills-view>
         <info-view route="info"> </info-view>
         <games-view route="games"> </games-view>
+        <signup-view route="signup"> </signup-view>
+        <rules-view route="rules"></rules-view>
       </custom-pages>
       <div class="footer">
       <small><span class="sides">&copy; 2019-2024</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
