@@ -94,6 +94,9 @@ export class PoHoWebShell extends LiteElement {
         background-color: var(--md-sys-color-primary);
         color: var(--md-sys-color-on-primary);
       }
+      flex-row {
+        gap: 6px;
+      }
     `
   ]
 

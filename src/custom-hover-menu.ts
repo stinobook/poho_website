@@ -36,6 +36,7 @@ export class CustomHoverMenu extends LiteElement {
         background-color: var(--md-sys-color-surface-container-highest);
         color: var(--md-sys-color-on-surface-variant-highest);
         border-radius: var(--md-sys-shape-corner-medium);
+        padding: 8px;
       }
 
       [name='sub-menu']::slotted(*:hover) {

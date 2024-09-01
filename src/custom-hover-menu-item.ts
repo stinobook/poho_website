@@ -22,9 +22,8 @@ export class CustomHoverMenuItem extends LiteElement {
     css`
       :host {
         display: flex;
-        padding: 12px 24px;
+        padding: 6px 12px;
         align-items: center;
-        height: 56px;
         box-sizing: border-box;
         cursor: pointer;
         border-radius: var(--md-sys-shape-corner-medium);

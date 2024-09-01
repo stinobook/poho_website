@@ -31,7 +31,6 @@ export class SignupView extends LiteElement {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 100%;
         background-color: var(--md-sys-color-surface-container-high);
         color: var(--md-sys-color-on-surface-container-high);
         border-radius: var(--md-sys-shape-corner-extra-large);
@@ -41,8 +40,8 @@ export class SignupView extends LiteElement {
       input, select {
         padding: 10px 10px 10px 15px;
         font-size: 1rem;
-        color: var(--md-sys-color-on-secondary);
-        background: var(--md-sys-color-secondary);
+        color: var(--md-sys-color-on-surface-container-highest);
+        background: var(--md-sys-color-surface-container-highest);
         border: 0;
         border-radius: 3px;
         outline: 0;
@@ -100,7 +99,7 @@ export class SignupView extends LiteElement {
         left : 27px;
       }
       .extra:checked + .pill {
-        background-color: var(--md-sys-color-primary);;
+        background-color: var(--md-sys-color-primary);
       }
       .extra {
         display : none;
@@ -111,8 +110,109 @@ export class SignupView extends LiteElement {
       md-filled-button {
         width: 100%;
       }
+      .error-message {
+        color: var(--md-sys-color-error);
+        display: inline-block;
+        font-size: 12px;
+        line-height: 15px;
+        margin: 5px 0 0;
+      }
+      label + .error-message {
+        display: none;
+      }
+      .error {
+        color: var(--md-sys-color-error);
+      }
+      .error input[type=text] {
+        background-color: var(--md-sys-color-error-container);
+        color: var(--md-sys-color-error);
+        border: 1px solid var(--md-sys-color-error);
+        outline: none;
+      }
+      .error + .error-message {
+        display: inline-block;
+        margin-right: 24px;
+        margin-left: auto;
+        margin-top: -10px;
+      }
     `
   ]
+
+
+  connectedCallback() {
+    this.shadowRoot.addEventListener("submit", (event) => this.submitForm(event))
+  }
+
+  submitForm(event) {
+    event.preventDefault()
+    const fields = Array.from(this.shadowRoot.querySelectorAll('input'))
+    const secSub = (this.shadowRoot.querySelector('#extra') as HTMLInputElement).checked
+    const rules = (this.shadowRoot.querySelector('#rules') as HTMLInputElement).checked
+    let noError = true
+    for (const field of fields) {
+      if (!field.value) {
+          if (secSub && (field.name === 'email2' || field.name === 'name2' || field.name === 'lastname2' || field.name === 'birthday2')) { 
+            field.parentElement.classList.add('error')
+            if (noError) noError = false
+          } else if (!secSub && field.name !== 'email2' && field.name !== 'name2' && field.name !== 'lastname2' && field.name !== 'birthday2') {
+            field.parentElement.classList.add('error')
+            if (noError) noError = false
+          }
+      } else {
+        switch (field.name) {
+          case 'email':
+          case 'email2':
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+              field.parentElement.classList.add('error')
+              if (noError) noError = false
+            } else {
+              field.parentElement.classList.remove('error')
+            }
+            break;
+          case 'street':
+            const streetRegex = /^(?<name>\w[\s\w]+?)\s*(?<num>\d+\s*[a-z]?)$/;
+            if (!streetRegex.test(field.value)) {
+              field.parentElement.classList.add('error')
+              if (noError) noError = false
+            } else {
+              field.parentElement.classList.remove('error')
+            }
+            break;
+          case 'community':
+            const communityRegex = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/;
+            if (!communityRegex.test(field.value)) {
+              field.parentElement.classList.add('error')
+              if (noError) noError = false
+            } else {
+              field.parentElement.classList.remove('error')
+            }
+            break;
+          case 'postalcode':
+            const postalcodeRegex = /^\d{4}$/;
+            if (!postalcodeRegex.test(field.value)) {
+              field.parentElement.classList.add('error')
+              if (noError) noError = false
+            } else {
+              field.parentElement.classList.remove('error')
+            }
+            break;
+          case 'phone':
+            const phoneRegex = /^(((\+|00)32[ ]?(?:\(0\)[ ]?)?)|0){1}(4(60|[6789]\d)\/?(\s?\d{2}\.?){2}(\s?\d{2})|(\d\/?\s?\d{3}|\d{2}\/?\s?\d{2})(\.?\s?\d{2}){2})$/;
+            if (!phoneRegex.test(field.value)) {
+              field.parentElement.classList.add('error')
+              if (noError) noError = false
+            } else {
+              field.parentElement.classList.remove('error')
+            }
+          default:
+            field.parentElement.classList.remove('error')
+            break;
+        }
+      }
+    }
+    console.log(noError)
+  }
 
   render() {
     return html`
@@ -122,7 +222,7 @@ export class SignupView extends LiteElement {
         <label>E-mail adres:<input type="text" name="email"/></label>
         <label>Voornaam<input type="text" name="name"/></label>
         <label>Familienaam<input type="text" name="lastname"/></label>
-        <label>Geboortedatum<input type="text" name="birthday"/></label>
+        <label>Geboortedatum<input type="date" name="birthday"/></label>
         <label class="extralabel">Tweede geleider inschrijven?</label>
         <input type="checkbox" name="extra" id='extra' class="extra"/>
         <label for="extra" class="pill"></label>
@@ -130,7 +230,7 @@ export class SignupView extends LiteElement {
           <label class="extradetails">E-mail adres:<input type="text" name="email2"/></label>
           <label class="extradetails">Voornaam<input type="text" name="name2"/></label>
           <label class="extradetails">Familienaam<input type="text" name="lastname2"/></label>
-          <label class="extradetails">Geboortedatum<input type="text" name="birthday2"/></label>
+          <label class="extradetails">Geboortedatum<input type="date" name="birthday2"/></label>
         <label class="sub">Woonplaats</label>
         <label>Straat en huisnummer<input type="text" name="street"/></label>
         <label>Gemeente<input type="text" name="community"/></label>
@@ -146,7 +246,7 @@ export class SignupView extends LiteElement {
         <label>Heb je al hondentraining gevolgd?<input type="text" name="experience"/></label>
         <label class="sub">Reglement</label>
         <label class="extralabel">Ik heb het <a href="#!/rules" @click=${() => location.hash = '!/rules'}>huishoudelijk reglement</a> gelezen en ga hiermee akkoord.
-        </label>
+        </label><span class="error-message">Gelieve akkoord te gaan met het huishoudelijk reglement</span>
         <input type="checkbox" name="rules" id='rules' class="extra"/>
         <label for="rules" class="pill"></label>
         <md-filled-button action="submit">Verzenden</md-filled-button>
