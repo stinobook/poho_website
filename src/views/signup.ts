@@ -308,6 +308,7 @@ export class SignupView extends LiteElement {
           field.parentElement.classList.remove('error')
           return(true)
         }
+        break;
       default:
         field.parentElement.classList.remove('error')
         return(true)
@@ -324,7 +325,7 @@ export class SignupView extends LiteElement {
     ></post-element>
       <form>
         <label class="sub">Eigen gegevens</label>
-        <label>E-mail adres:<input type="text" name="email"/></label>
+        <label>E-mail adres<input type="text" name="email"/></label>
         <label>Voornaam<input type="text" name="name"/></label>
         <label>Familienaam<input type="text" name="lastname"/></label>
         <label>Geboortedatum<input type="date" name="birthday"/></label>

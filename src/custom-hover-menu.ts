@@ -24,7 +24,7 @@ export class CustomHoverMenu extends LiteElement {
         pointer-events: none;
         z-index: 1000;
         position: absolute;
-        top: 54px;
+        top: 45px;
         max-height: 0;
         transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
         left: 50%;

@@ -287,6 +287,7 @@ export class PoHoWebShell extends LiteElement {
         <games-view route="games"> </games-view>
         <signup-view route="signup"> </signup-view>
         <rules-view route="rules"></rules-view>
+        <contact-view route="contact"></contact-view>
       </custom-pages>
       <div class="footer">
       <small><span class="sides">&copy; 2019-2024</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
