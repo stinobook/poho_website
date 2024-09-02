@@ -117,7 +117,7 @@ export class SignupView extends LiteElement {
         line-height: 15px;
         margin: 5px 0 0;
       }
-      label + .error-message {
+      label + input + label + .error-message {
         display: none;
       }
       .error {
@@ -129,11 +129,9 @@ export class SignupView extends LiteElement {
         border: 1px solid var(--md-sys-color-error);
         outline: none;
       }
-      .error + .error-message {
+      .error + input + label + .error-message {
         display: inline-block;
-        margin-right: 24px;
-        margin-left: auto;
-        margin-top: -10px;
+        margin: -12px 12px 12px;
       }
     `
   ]
@@ -141,13 +139,19 @@ export class SignupView extends LiteElement {
 
   connectedCallback() {
     this.shadowRoot.addEventListener("submit", (event) => this.submitForm(event))
+    this.shadowRoot.addEventListener("input", (event) => this.formValid(event.target))
+    this.shadowRoot.querySelector("#rules").addEventListener("change", (event) => {
+      const rules = this.shadowRoot.querySelector('#rules') as HTMLInputElement
+      (!rules.checked) ? this.shadowRoot.querySelector('#rules2').classList.add('error') : this.shadowRoot.querySelector('#rules2').classList.remove('error')
+
+    })
   }
 
   submitForm(event) {
     event.preventDefault()
     const fields = Array.from(this.shadowRoot.querySelectorAll('input'))
     const secSub = (this.shadowRoot.querySelector('#extra') as HTMLInputElement).checked
-    const rules = (this.shadowRoot.querySelector('#rules') as HTMLInputElement).checked
+    const rules = this.shadowRoot.querySelector('#rules') as HTMLInputElement
     let noError = true
     for (const field of fields) {
       if (!field.value) {
@@ -159,59 +163,76 @@ export class SignupView extends LiteElement {
             if (noError) noError = false
           }
       } else {
-        switch (field.name) {
-          case 'email':
-          case 'email2':
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(field.value)) {
-              field.parentElement.classList.add('error')
-              if (noError) noError = false
-            } else {
-              field.parentElement.classList.remove('error')
-            }
-            break;
-          case 'street':
-            const streetRegex = /^(?<name>\w[\s\w]+?)\s*(?<num>\d+\s*[a-z]?)$/;
-            if (!streetRegex.test(field.value)) {
-              field.parentElement.classList.add('error')
-              if (noError) noError = false
-            } else {
-              field.parentElement.classList.remove('error')
-            }
-            break;
-          case 'community':
-            const communityRegex = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/;
-            if (!communityRegex.test(field.value)) {
-              field.parentElement.classList.add('error')
-              if (noError) noError = false
-            } else {
-              field.parentElement.classList.remove('error')
-            }
-            break;
-          case 'postalcode':
-            const postalcodeRegex = /^\d{4}$/;
-            if (!postalcodeRegex.test(field.value)) {
-              field.parentElement.classList.add('error')
-              if (noError) noError = false
-            } else {
-              field.parentElement.classList.remove('error')
-            }
-            break;
-          case 'phone':
-            const phoneRegex = /^(((\+|00)32[ ]?(?:\(0\)[ ]?)?)|0){1}(4(60|[6789]\d)\/?(\s?\d{2}\.?){2}(\s?\d{2})|(\d\/?\s?\d{3}|\d{2}\/?\s?\d{2})(\.?\s?\d{2}){2})$/;
-            if (!phoneRegex.test(field.value)) {
-              field.parentElement.classList.add('error')
-              if (noError) noError = false
-            } else {
-              field.parentElement.classList.remove('error')
-            }
-          default:
-            field.parentElement.classList.remove('error')
-            break;
-        }
+        if (!this.validCheck(field) && noError) noError = false
       }
     }
-    console.log(noError)
+    (!rules.checked) ? this.shadowRoot.querySelector('#rules2').classList.add('error') : this.shadowRoot.querySelector('#rules2').classList.remove('error')
+    console.log(noError) 
+  }
+
+  formValid(field) {
+    if (field.parentElement.classList.contains('error')) {
+      this.validCheck(field)
+    }
+  }
+
+  validCheck(field) {
+    switch (field.name) {
+      case 'email':
+      case 'email2':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(field.value)) {
+          field.parentElement.classList.add('error')
+          return (false)
+        } else {
+          field.parentElement.classList.remove('error')
+          return(true)
+        }
+        break;
+      case 'street':
+        const streetRegex = /^(?<name>\w[\s\w]+?)\s*(?<num>\d+\s*[a-z]?)$/;
+        if (!streetRegex.test(field.value)) {
+          field.parentElement.classList.add('error')
+          return (false)
+        } else {
+          field.parentElement.classList.remove('error')
+          return(true)
+        }
+        break;
+      case 'community':
+        const communityRegex = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/;
+        if (!communityRegex.test(field.value)) {
+          field.parentElement.classList.add('error')
+          return (false)
+        } else {
+          field.parentElement.classList.remove('error')
+          return(true)
+        }
+        break;
+      case 'postalcode':
+        const postalcodeRegex = /^\d{4}$/;
+        if (!postalcodeRegex.test(field.value)) {
+          field.parentElement.classList.add('error')
+          return (false)
+        } else {
+          field.parentElement.classList.remove('error')
+          return(true)
+        }
+        break;
+      case 'phone':
+        const phoneRegex = /^(((\+|00)32[ ]?(?:\(0\)[ ]?)?)|0){1}(4(60|[6789]\d)\/?(\s?\d{2}\.?){2}(\s?\d{2})|(\d\/?\s?\d{3}|\d{2}\/?\s?\d{2})(\.?\s?\d{2}){2})$/;
+        if (!phoneRegex.test(field.value)) {
+          field.parentElement.classList.add('error')
+          return (false)
+        } else {
+          field.parentElement.classList.remove('error')
+          return(true)
+        }
+      default:
+        field.parentElement.classList.remove('error')
+        return(true)
+        break;
+    }
   }
 
   render() {
@@ -245,10 +266,10 @@ export class SignupView extends LiteElement {
         <label>Leeftijd bij aankoop<input type="text" name="buyage"/></label>
         <label>Heb je al hondentraining gevolgd?<input type="text" name="experience"/></label>
         <label class="sub">Reglement</label>
-        <label class="extralabel">Ik heb het <a href="#!/rules" @click=${() => location.hash = '!/rules'}>huishoudelijk reglement</a> gelezen en ga hiermee akkoord.
-        </label><span class="error-message">Gelieve akkoord te gaan met het huishoudelijk reglement</span>
+        <label id="rules2" class="extralabel">Ik heb het <a href="#!/rules" @click=${() => location.hash = '!/rules'}>huishoudelijk reglement</a> gelezen en ga hiermee akkoord.</label>
         <input type="checkbox" name="rules" id='rules' class="extra"/>
         <label for="rules" class="pill"></label>
+        <span class="error-message">Gelieve akkoord te gaan met het huishoudelijk reglement</span>
         <md-filled-button action="submit">Verzenden</md-filled-button>
       </form>
     </flex-container>
