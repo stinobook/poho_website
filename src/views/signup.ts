@@ -1,7 +1,45 @@
-import { html, css, LiteElement, query } from '@vandeurenglenn/lite'
+import { html, css, LiteElement } from '@vandeurenglenn/lite'
 import { customElement } from 'lit/decorators.js'
 import '@vandeurenglenn/flex-elements/container.js'
 import '@material/web/button/filled-button.js'
+import { initializeApp } from 'firebase/app'
+import { push, ref, getDatabase } from 'firebase/database'
+import '../components/post.js'
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyASfmIWBP0bBdwd3uIWT9cxkaTV6DsncZE',
+  authDomain: 'poho-app-8dce1.firebaseapp.com',
+  projectId: 'poho-app',
+  storageBucket: 'poho-app.appspot.com',
+  messagingSenderId: '878719433981',
+  appId: '1:878719433981:web:8bbc0d0bb355da551b9294',
+  measurementId: 'G-7C3T5W3P3D',
+  databaseURL: 'https://poho-app-default-rtdb.europe-west1.firebasedatabase.app/'
+}
+const app = initializeApp(firebaseConfig)
+const database = getDatabase()
+const path = "/members"
+type Member = {
+  key?: string
+  name: string
+  lastname: string
+  group: string
+  birthday: string
+  street: string
+  community: string
+  postalcode: number
+  phone: string
+  email: string
+  dogname: string
+  dograce: string
+  pedigree?: string
+  chipnumber: string
+  extra?: string
+  userphotoURL: string
+  userphotobgURL: string
+  status: string
+  experience: string
+}
 
 @customElement('signup-view')
 export class SignupView extends LiteElement {
@@ -136,10 +174,9 @@ export class SignupView extends LiteElement {
     `
   ]
 
-
   connectedCallback() {
     this.shadowRoot.addEventListener("submit", (event) => this.submitForm(event))
-    this.shadowRoot.addEventListener("input", (event) => this.formValid(event.target))
+    this.shadowRoot.addEventListener("change", (event) => this.formValid(event.target))
     this.shadowRoot.querySelector("#rules").addEventListener("change", (event) => {
       const rules = this.shadowRoot.querySelector('#rules') as HTMLInputElement
       (!rules.checked) ? this.shadowRoot.querySelector('#rules2').classList.add('error') : this.shadowRoot.querySelector('#rules2').classList.remove('error')
@@ -147,7 +184,7 @@ export class SignupView extends LiteElement {
     })
   }
 
-  submitForm(event) {
+  async submitForm(event) {
     event.preventDefault()
     const fields = Array.from(this.shadowRoot.querySelectorAll('input'))
     const secSub = (this.shadowRoot.querySelector('#extra') as HTMLInputElement).checked
@@ -158,7 +195,7 @@ export class SignupView extends LiteElement {
           if (secSub && (field.name === 'email2' || field.name === 'name2' || field.name === 'lastname2' || field.name === 'birthday2')) { 
             field.parentElement.classList.add('error')
             if (noError) noError = false
-          } else if (!secSub && field.name !== 'email2' && field.name !== 'name2' && field.name !== 'lastname2' && field.name !== 'birthday2') {
+          } else if (!secSub && field.name !== 'email2' && field.name !== 'name2' && field.name !== 'lastname2' && field.name !== 'birthday2' && field.name !== 'pedigree') {
             field.parentElement.classList.add('error')
             if (noError) noError = false
           }
@@ -167,7 +204,50 @@ export class SignupView extends LiteElement {
       }
     }
     (!rules.checked) ? this.shadowRoot.querySelector('#rules2').classList.add('error') : this.shadowRoot.querySelector('#rules2').classList.remove('error')
-    console.log(noError) 
+    if (noError) {
+      let newMember: Member = {
+        name: fields.filter(field => field.name === 'name')[0].value,
+        lastname: fields.filter(field => field.name === 'lastname')[0].value,
+        group: "leden",
+        birthday: fields.filter(field => field.name === 'birthday')[0].value,
+        street: fields.filter(field => field.name === 'street')[0].value,
+        community: fields.filter(field => field.name === 'community')[0].value,
+        postalcode: Number(fields.filter(field => field.name === 'postalcode')[0].value),
+        phone: fields.filter(field => field.name === 'phone')[0].value,
+        email: fields.filter(field => field.name === 'email')[0].value,
+        dogname: fields.filter(field => field.name === 'dogname')[0].value,
+        dograce: fields.filter(field => field.name === 'dograce')[0].value,
+        chipnumber: fields.filter(field => field.name === 'chipnumber')[0].value,
+        experience: fields.filter(field => field.name === 'experience')[0].value,
+        userphotoURL: 'https://firebasestorage.googleapis.com/v0/b/poho-app.appspot.com/o/members%2Fundefineddefaultavatar_300x300?alt=media&token=8077832e-4de9-4497-94f0-90628234988f',
+        userphotobgURL: 'https://firebasestorage.googleapis.com/v0/b/poho-app.appspot.com/o/members%2Fundefineddefaultbackground_300x300?alt=media&token=81fda580-89dd-4888-b919-a3883822cf84',
+        status: "nieuw"
+      }
+      if (fields.filter(field => field.name === 'pedigree')[0].value) newMember['pedigree'] = fields.filter(field => field.name === 'pedigree')[0].value
+      if (secSub) {
+        let extraMember: Member = {
+          name: fields.filter(field => field.name === 'name2')[0].value,
+          lastname: fields.filter(field => field.name === 'lastname2')[0].value,
+          group: "leden",
+          birthday: fields.filter(field => field.name === 'birthday2')[0].value,
+          street: fields.filter(field => field.name === 'street')[0].value,
+          community: fields.filter(field => field.name === 'community')[0].value,
+          postalcode: Number(fields.filter(field => field.name === 'postalcode')[0].value),
+          phone: fields.filter(field => field.name === 'phone')[0].value,
+          email: fields.filter(field => field.name === 'email2')[0].value,
+          dogname: fields.filter(field => field.name === 'dogname')[0].value,
+          dograce: fields.filter(field => field.name === 'dograce')[0].value,
+          chipnumber: fields.filter(field => field.name === 'chipnumber')[0].value,
+          experience: fields.filter(field => field.name === 'experience')[0].value,
+          userphotoURL: 'https://firebasestorage.googleapis.com/v0/b/poho-app.appspot.com/o/members%2Fundefineddefaultavatar_300x300?alt=media&token=8077832e-4de9-4497-94f0-90628234988f',
+          userphotobgURL: 'https://firebasestorage.googleapis.com/v0/b/poho-app.appspot.com/o/members%2Fundefineddefaultbackground_300x300?alt=media&token=81fda580-89dd-4888-b919-a3883822cf84',
+          status: "nieuw"
+        }
+        if (fields.filter(field => field.name === 'pedigree')[0].value) extraMember['pedigree'] = fields.filter(field => field.name === 'pedigree')[0].value
+        newMember['extra'] = await push(ref(database, path),extraMember).key
+      }
+      await push(ref(database, path),newMember)
+    }
   }
 
   formValid(field) {
@@ -238,6 +318,10 @@ export class SignupView extends LiteElement {
   render() {
     return html`
     <flex-container>
+    <post-element
+    headline="Kom jij ook les volgen op onze hondenschool?"
+    content="Vul onderstaand formulier dan in, alle velden behalve stamboomnummer zijn verplicht."
+    ></post-element>
       <form>
         <label class="sub">Eigen gegevens</label>
         <label>E-mail adres:<input type="text" name="email"/></label>
