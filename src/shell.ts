@@ -206,6 +206,21 @@ export class PoHoWebShell extends LiteElement {
               name="Dagboek Iron" route="iron"></custom-hover-menu-item>
           </custom-hover-menu>
 
+          <custom-hover-menu name="Multimedia">
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Hodenrace 2020" route="dograce2020"></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Geluidsfragmenten" route="audio"></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Brevet 2022" route="brevet"></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Varia" route="varia"></custom-hover-menu-item>
+          </custom-hover-menu>
+
           <custom-hover-menu-item name="Thema-avonden" route="presentations"></custom-hover-menu-item>
           <custom-hover-menu-item name="Contact" route="contact"></custom-hover-menu-item>
           <custom-hover-menu-item class="signup" name="Inschrijven" route="signup"></custom-hover-menu-item>
@@ -271,6 +286,27 @@ export class PoHoWebShell extends LiteElement {
             name="Dagboek Iron" route="iron"></custom-hover-menu-item>
         </custom-hover-menu>
 
+
+        <custom-hover-menu
+        type="drawer" name="Multimedia">
+        <custom-hover-menu-item
+          slot="sub-menu"
+          type="drawer"
+          name="Hodenrace 2020" route="dograce2020"></custom-hover-menu-item>
+        <custom-hover-menu-item
+          slot="sub-menu"
+          type="drawer"
+          name="Geluidsfragmenten" route="audio"></custom-hover-menu-item>
+        <custom-hover-menu-item
+          slot="sub-menu"
+          type="drawer"
+          name="Brevet 2022" route="brevet"></custom-hover-menu-item>
+        <custom-hover-menu-item
+          slot="sub-menu"
+          type="drawer"
+          name="Varia" route="varia"></custom-hover-menu-item>
+      </custom-hover-menu>
+
         <custom-hover-menu-item
           type="drawer"
           name="Thema-avonden" route="presentations"></custom-hover-menu-item>
@@ -298,6 +334,7 @@ export class PoHoWebShell extends LiteElement {
         <signup-view route="signup"> </signup-view>
         <rules-view route="rules"></rules-view>
         <contact-view route="contact"></contact-view>
+        <varia-view route="varia"></varia-view>
       </custom-pages>
       <div class="footer">
       <small><span class="sides">&copy; 2019-2024</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
