@@ -48,6 +48,7 @@ export class PoHoWebShell extends LiteElement {
       }
       .logo {
         background: url('./assets/icons/icon-32x32.png') no-repeat;
+        cursor: pointer;
 
       }
       .logo h1 {
@@ -56,6 +57,7 @@ export class PoHoWebShell extends LiteElement {
         min-width: fit-content;
         margin: 0 0 0 44px;
         height: 32px;
+        cursor: pointer;
       }
 
       header-element {
@@ -163,7 +165,7 @@ export class PoHoWebShell extends LiteElement {
       <header-element>
         <div
           class="logo"
-          route="home"><h1>PoHo</h1></div>
+          @click=${() => location.hash = '!/home'} ><h1>PoHo</h1></div>
 
         <flex-it></flex-it>
 
@@ -213,7 +215,7 @@ export class PoHoWebShell extends LiteElement {
       <drawer-element>
       <div slot="logoname"
         class="logo"
-        route="home"><h1>PoHo</h1></div>
+        @click=${() => location.hash = '!/home'}><h1>PoHo</h1></div>
 
         <custom-hover-menu-item
           type="drawer"

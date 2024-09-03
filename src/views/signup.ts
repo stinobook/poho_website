@@ -322,7 +322,7 @@ export class SignupView extends LiteElement {
     <post-element
     headline="Kom jij ook les volgen op onze hondenschool?"
     .content=${html`
-        <p>Vul onderstaand formulier dan in, alle velden behalve stamboomnummer zijn verplicht.</p>
+        <p>Vul dan onderstaand formulier in, alle velden behalve stamboomnummer zijn verplicht.</p>
         <p>Elke woensdag is er een vrijblijvend <strong>info- en kennismakingsmoment</strong> om <strong>20u15</strong>, hier kan je wat uitleg krijgen over onze hondenschool alsook vragen stellen.</p>
         `}
     ></post-element>
