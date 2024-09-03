@@ -122,6 +122,13 @@ export class OrganisationView extends LiteElement {
     class="hidden"
     ></member-element>
     <member-element
+    group="instructeurs"
+    image="./img/members/jordy.webp"
+    name="Jordy"
+    title="In opleiding"
+    class="hidden"
+    ></member-element>
+    <member-element
     group="medewerkers"
     image="./img/logo.png"
     name="Kristel"

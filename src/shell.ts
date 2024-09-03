@@ -199,6 +199,9 @@ export class PoHoWebShell extends LiteElement {
             <custom-hover-menu-item
               slot="sub-menu"
               name="Test Sociaal gedrag" @click=${() => window.open('./img/test_sociaal_gedrag.pdf', '_blank')}></custom-hover-menu-item>
+            <custom-hover-menu-item
+              slot="sub-menu"
+              name="Dagboek Iron" route="iron"></custom-hover-menu-item>
           </custom-hover-menu>
 
           <custom-hover-menu-item name="Thema-avonden" route="presentations"></custom-hover-menu-item>
@@ -260,6 +263,10 @@ export class PoHoWebShell extends LiteElement {
             slot="sub-menu"
             type="drawer"
             name="Test Sociaal gedrag" @click=${() => window.open('./img/test_sociaal_gedrag.pdf', '_blank')}></custom-hover-menu-item>
+          <custom-hover-menu-item
+            slot="sub-menu"
+            type="drawer"
+            name="Dagboek Iron" route="iron"></custom-hover-menu-item>
         </custom-hover-menu>
 
         <custom-hover-menu-item
@@ -285,6 +292,7 @@ export class PoHoWebShell extends LiteElement {
         <puppymills-view route="puppymills"> </puppymills-view>
         <info-view route="info"> </info-view>
         <games-view route="games"> </games-view>
+        <iron-view route="iron"> </iron-view>
         <signup-view route="signup"> </signup-view>
         <rules-view route="rules"></rules-view>
         <contact-view route="contact"></contact-view>

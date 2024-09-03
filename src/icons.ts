@@ -27,6 +27,7 @@ export default html`
       <span name="cancel">@symbol-cancel</span>
       <span name="info">@symbol-info</span>
       <span name="close">@symbol-close</span>
+      <span name="pdf">@symbol-picture_as_pdf</span>
     </template>
   </custom-icon-set>
 `

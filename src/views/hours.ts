@@ -66,6 +66,7 @@ export class HoursView extends LiteElement {
                     <td>20 u.</td>
                   </tr>
                 </table>
+                <p>Elke woensdag is er een vrijblijvend <strong>info- en kennismakingsmoment</strong> om <strong>20u15</strong>, hier kan je wat uitleg krijgen over onze hondenschool alsook vragen stellen.</p>
                 `}
       ></post-element>
       <post-element
@@ -73,7 +74,7 @@ export class HoursView extends LiteElement {
       .content=${html`
                   De hondenschool is gesloten indien stormweer voorspeld wordt.<br>
                   STORMWEER betekent : hevige rukwinden, hevig onweer, hagel en zware sneeuwval.
-                  <p>Dit wordt vooraf op de POHO facebookpagina gecommuniceerd</p>
+                  <p>Dit wordt vooraf op de PoHo facebookpagina gecommuniceerd</p>
                   <custom-button type="filled" label="Facebook" @click=${() => window.open('https://www.facebook.com/groups/237522749633012', '_blank')}>
                   <span slot="icon"><custom-icon icon="groups"></custom-icon></span>
                   </custom-button>
