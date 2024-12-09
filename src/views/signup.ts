@@ -177,10 +177,9 @@ export class SignupView extends LiteElement {
   connectedCallback() {
     this.shadowRoot.addEventListener("submit", (event) => this.submitForm(event))
     this.shadowRoot.addEventListener("change", (event) => this.formValid(event.target))
-    this.shadowRoot.querySelector("#rules").addEventListener("change", (event) => {
+    this.shadowRoot.querySelector("#rules").addEventListener("change", () => {
       const rules = this.shadowRoot.querySelector('#rules') as HTMLInputElement
       (!rules.checked) ? this.shadowRoot.querySelector('#rules2').classList.add('error') : this.shadowRoot.querySelector('#rules2').classList.remove('error')
-
     })
   }
 
@@ -244,9 +243,17 @@ export class SignupView extends LiteElement {
           status: "nieuw"
         }
         if (fields.filter(field => field.name === 'pedigree')[0].value) extraMember['pedigree'] = fields.filter(field => field.name === 'pedigree')[0].value
-        newMember['extra'] = await push(ref(database, path),extraMember).key
+        newMember['extra'] = push(ref(database, path),extraMember).key
       }
-      await push(ref(database, path),newMember)
+      await push(ref(database, path),newMember).then(() => {
+        alert('Bedankt voor je inschrijving.')
+        // clear the fields
+        fields.forEach(field => field.value = '');
+        (this.shadowRoot.querySelector('#extra') as HTMLInputElement).checked = false;
+      }).catch((error) => {
+        alert('Er is iets fout gegaan, probeer het later opnieuw.')
+        console.error(error)
+      });
     }
   }
 
@@ -268,7 +275,6 @@ export class SignupView extends LiteElement {
           field.parentElement.classList.remove('error')
           return(true)
         }
-        break;
       case 'street':
         const streetRegex = /^(?<name>\w[\s\w]+?)\s*(?<num>\d+\s*[a-z]?)$/;
         if (!streetRegex.test(field.value)) {
@@ -278,7 +284,6 @@ export class SignupView extends LiteElement {
           field.parentElement.classList.remove('error')
           return(true)
         }
-        break;
       case 'community':
         const communityRegex = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/;
         if (!communityRegex.test(field.value)) {
@@ -288,7 +293,6 @@ export class SignupView extends LiteElement {
           field.parentElement.classList.remove('error')
           return(true)
         }
-        break;
       case 'postalcode':
         const postalcodeRegex = /^\d{4}$/;
         if (!postalcodeRegex.test(field.value)) {
@@ -298,7 +302,6 @@ export class SignupView extends LiteElement {
           field.parentElement.classList.remove('error')
           return(true)
         }
-        break;
       case 'phone':
         const phoneRegex = /^(((\+|00)32[ ]?(?:\(0\)[ ]?)?)|0){1}(4(60|[6789]\d)\/?(\s?\d{2}\.?){2}(\s?\d{2})|(\d\/?\s?\d{3}|\d{2}\/?\s?\d{2})(\.?\s?\d{2}){2})$/;
         if (!phoneRegex.test(field.value)) {
@@ -308,11 +311,9 @@ export class SignupView extends LiteElement {
           field.parentElement.classList.remove('error')
           return(true)
         }
-        break;
       default:
         field.parentElement.classList.remove('error')
         return(true)
-        break;
     }
   }
 
