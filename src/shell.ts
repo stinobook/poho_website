@@ -165,7 +165,7 @@ export class PoHoWebShell extends LiteElement {
       <header-element>
         <div
           class="logo"
-          @click=${() => location.hash = '!/home'} ><h1>PoHo</h1></div>
+          @click=${() => location.hash = '!/home'} ><h1>Hondenschool PoHo</h1></div>
 
         <flex-it></flex-it>
 
@@ -220,7 +220,7 @@ export class PoHoWebShell extends LiteElement {
       <drawer-element>
       <div slot="logoname"
         class="logo"
-        @click=${() => location.hash = '!/home'}><h1>PoHo</h1></div>
+        @click=${() => location.hash = '!/home'}><h1>Hodenschool PoHo</h1></div>
 
         <custom-hover-menu-item
           type="drawer"
