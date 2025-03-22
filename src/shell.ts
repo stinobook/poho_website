@@ -312,7 +312,7 @@ export class PoHoWebShell extends LiteElement {
         <varia-view route="varia"></varia-view>
       </custom-pages>
       <div class="footer">
-      <small><span class="sides">&copy; 2019-2024</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
+      <small><span class="sides">&copy; 2019-2025</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
       </div>
     `
   }
