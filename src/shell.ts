@@ -209,15 +209,6 @@ export class PoHoWebShell extends LiteElement {
           <custom-hover-menu name="Multimedia">
             <custom-hover-menu-item
               slot="sub-menu"
-              name="Hodenrace 2020" route="dograce2020"></custom-hover-menu-item>
-            <custom-hover-menu-item
-              slot="sub-menu"
-              name="Geluidsfragmenten" route="audio"></custom-hover-menu-item>
-            <custom-hover-menu-item
-              slot="sub-menu"
-              name="Brevet 2022" route="brevet"></custom-hover-menu-item>
-            <custom-hover-menu-item
-              slot="sub-menu"
               name="Varia" route="varia"></custom-hover-menu-item>
           </custom-hover-menu>
 
@@ -289,18 +280,6 @@ export class PoHoWebShell extends LiteElement {
 
         <custom-hover-menu
         type="drawer" name="Multimedia">
-        <custom-hover-menu-item
-          slot="sub-menu"
-          type="drawer"
-          name="Hodenrace 2020" route="dograce2020"></custom-hover-menu-item>
-        <custom-hover-menu-item
-          slot="sub-menu"
-          type="drawer"
-          name="Geluidsfragmenten" route="audio"></custom-hover-menu-item>
-        <custom-hover-menu-item
-          slot="sub-menu"
-          type="drawer"
-          name="Brevet 2022" route="brevet"></custom-hover-menu-item>
         <custom-hover-menu-item
           slot="sub-menu"
           type="drawer"

@@ -111,7 +111,7 @@ export class OrganisationView extends LiteElement {
     group="instructeurs"
     image="./img/members/madeline.webp"
     name="Madeline"
-    title="Adjunct-hoofdinstructeur / allroundinstructeur recreanten"
+    title="Allroundinstructeur recreanten"
     class="hidden"
     ></member-element>
     <member-element
@@ -119,19 +119,6 @@ export class OrganisationView extends LiteElement {
     image="./img/members/dirk.webp"
     name="Dirk"
     title="Hoofdinstructeur / allroundinstructeur / welpenklas"
-    class="hidden"
-    ></member-element>
-    <member-element
-    group="instructeurs"
-    image="./img/members/jordy.webp"
-    name="Jordy"
-    title="In opleiding"
-    class="hidden"
-    ></member-element>
-    <member-element
-    group="medewerkers"
-    image="./img/logo.png"
-    name="Kristel"
     class="hidden"
     ></member-element>
     <member-element
