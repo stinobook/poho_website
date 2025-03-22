@@ -212,7 +212,6 @@ export class PoHoWebShell extends LiteElement {
               name="Varia" route="varia"></custom-hover-menu-item>
           </custom-hover-menu>
 
-          <custom-hover-menu-item name="Thema-avonden" route="presentations"></custom-hover-menu-item>
           <custom-hover-menu-item name="Contact" route="contact"></custom-hover-menu-item>
           <custom-hover-menu-item class="signup" name="Inschrijven" route="signup"></custom-hover-menu-item>
         </flex-row>
@@ -286,9 +285,6 @@ export class PoHoWebShell extends LiteElement {
           name="Varia" route="varia"></custom-hover-menu-item>
       </custom-hover-menu>
 
-        <custom-hover-menu-item
-          type="drawer"
-          name="Thema-avonden" route="presentations"></custom-hover-menu-item>
         <custom-hover-menu-item
           type="drawer"
           name="Contact" route="contact"></custom-hover-menu-item>

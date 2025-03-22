@@ -48,29 +48,6 @@ export class HomeView extends LiteElement {
       Toekomstige hondeneigenaars of mensen die reeds een hond hebben dienen nog beter geïnformeerd te worden."
       ></post-element>
       <post-element
-      image="./img/thema-avonden.webp"
-      headline="6 Thema-avonden"
-      subline="Informatieavond over diverse onderwerpen"
-      .content=${html`
-      <ol>
-        <li>Aanschaf van een hond – rassen – fokker : maandag 1 juli 2024 19u30</li>
-        <li>Speeltjes maken voor honden: donderdag 22 augustus 2024 19u30</li>
-        <li>Voedingsleer : maandag 9 september19u30</li>
-        <li>Opvoedingstips : maandag 7 oktober 2024 19u30</li>
-        <li>EHBO bij honden : 4 november 2024 :   19.30u</li>
-        <li>Lichaamstaal van de hond: maandag 2 december19u30</li>
-      </ol>
-      <p>
-      Max. 30 personen per thema avond en minstens 10 dagen vooraf in te schrijven.
-      3 euro inschrijvingsgeld te storten op bankrekeningnr. BE88 7370 1345 3741
-      met vermelding “inschrijving thema-avond + naam en datum”.
-      </p>
-      <custom-button type="filled" label="Inschrijven">
-      <span slot="icon"><custom-icon icon="pen"></custom-icon></span>
-      </custom-button>
-      `}
-      ></post-element>
-      <post-element
       image="./img/QRtrooper.webp"
       headline="Trooper"
       subline="Gratis steun voor onze hondenschool dankzij online-shopping"
