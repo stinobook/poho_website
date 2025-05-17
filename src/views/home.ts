@@ -41,11 +41,15 @@ export class HomeView extends LiteElement {
     return html`
     <flex-container>
       <post-element
-      image="./img/canvas.svg"
+      image="./img/luchtfoto.jpg"
       headline="Welkom!"
-      content="Onze hondenschool bestaat meer dan 25 jaar en elke woensdag- en vrijdagavond geven wij gehoorzaamheidstrainingen.
+      .content=${html`
+      <p>Onze hondenschool bestaat meer dan 25 jaar en elke woensdag- en vrijdagavond geven wij gehoorzaamheidstrainingen.
       Doch merken wij dat er daarnaast nog enorm veel vragen zijn en dit is de reden waarom wij onderstaande thema avonden organiseren.
-      Toekomstige hondeneigenaars of mensen die reeds een hond hebben dienen nog beter geïnformeerd te worden."
+      Toekomstige hondeneigenaars of mensen die reeds een hond hebben dienen nog beter geïnformeerd te worden.<br/> <br/>
+      <strong class="larger">Onthaalmoment:</strong> Woensdag om 20.00 uur<br/>
+    <strong class="larger">Instappen eerste les:</strong> Vrijdag om 20.00 uur, na inschrijving</p>
+    `}
       ></post-element>
       <post-element
       image="./img/thema-avonden.webp"

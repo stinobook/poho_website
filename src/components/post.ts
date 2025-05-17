@@ -70,6 +70,9 @@ export class PostElement extends LiteElement {
         position: relative;
         margin-bottom: 12px;
       }
+      .larger {
+        font-size: 1.2rem;
+      }
       custom-icon {
         --custom-icon-color: var(--md-sys-color-on-primary);
       }

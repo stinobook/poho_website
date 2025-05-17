@@ -9,46 +9,77 @@ import '../components/member.js'
 export class OrganisationView extends LiteElement {
   static styles = [
     css`
-      :host {
-        overflow-y: auto;
-      }
-      ::-webkit-scrollbar {
-        width: 8px;
-        border-radius: var(--md-sys-shape-corner-extra-large);
-        background-color: var(--md-sys-color-surface-container-highest);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--md-sys-color-on-surface-container-highest);
-        border-radius: var(--md-sys-shape-corner-extra-large);
-        box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
-      }
-      flex-container {
-        flex-flow: row wrap;
-        justify-content: center;
-        max-width: 1024px;
-        gap:12px;
-        height:fit-content;
-        margin: 0 auto;
-        align-items: stretch;
-      }
-      custom-tabs {
-        width: 100%;
-      }
-      .hidden {
+        :host {
+            overflow-y: auto;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            border-radius: var(--md-sys-shape-corner-extra-large);
+            background-color: var(--md-sys-color-surface-container-highest);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--md-sys-color-on-surface-container-highest);
+            border-radius: var(--md-sys-shape-corner-extra-large);
+            box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
+        }
+        flex-container {
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            max-width: 1024px;
+            gap:12px;
+            height:fit-content;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+        custom-tabs {
+            width: 100%;
+        }
+        member-element {
+        opacity: 1;
+        transform: scale(1);
+        transition: opacity 250ms ease, transform 250ms ease;
+        display: block;
+        }
+
+        member-element.hidden {
         display: none;
-      }
+        opacity: 0;
+        }
+         member-element.fade-in {
+        opacity: 0;
+        transform: scale(0.95);
+        }
+
+         member-element.fade-in.show {
+        opacity: 1;
+        transform: scale(1);
+        }
     `
   ]
 
 
   @property() accessor selected
+async select(selected) {
+  const group = selected.detail;
+  const members = this.shadowRoot.querySelectorAll('member-element');
 
-  async select(selected) {
-    console.log(selected.detail)
-    let members = this.shadowRoot.querySelectorAll('member-element')
-    members.forEach((member) => member.getAttribute('group') === selected.detail ? member.classList.remove('hidden') : member.classList.add('hidden'))
-    this.requestRender()
-  }
+  members.forEach((member) => {
+    const isMatch = member.getAttribute('group') === group;
+
+    if (isMatch) {
+      member.classList.remove('hidden');
+      member.classList.add('fade-in');
+      requestAnimationFrame(() => {
+        member.classList.add('show');
+      });
+    } else {
+      member.classList.remove('show', 'fade-in');
+      member.classList.add('hidden');
+    }
+  });
+
+  this.requestRender();
+}
 
   render() {
     return html`
@@ -118,7 +149,7 @@ export class OrganisationView extends LiteElement {
     group="instructeurs"
     image="./img/members/dirk.webp"
     name="Dirk"
-    title="Hoofdinstructeur / allroundinstructeur / welpenklas"
+    title="Pups / Clickerinitiatie"
     class="hidden"
     ></member-element>
     <member-element

@@ -91,6 +91,7 @@ export class PoHoWebShell extends LiteElement {
       .sides {
         flex-grow: 1;
         flex-basis: 0;
+        min-width: max-content;
       }
       .right {
         text-align: right;
@@ -101,6 +102,12 @@ export class PoHoWebShell extends LiteElement {
       }
       flex-row {
         gap: 6px;
+      }
+         @media (max-width: 1280px) {
+        header-element {
+          min-width: 100%;
+          max-height: 60px;
+        }
       }
     `
   ]
@@ -320,7 +327,7 @@ export class PoHoWebShell extends LiteElement {
         <varia-view route="varia"></varia-view>
       </custom-pages>
       <div class="footer">
-      <small><span class="sides">&copy; 2019-2025</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides right">BE 0869 886 793</span></small>
+      <small><span class="sides">&copy; 2019-2025</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding: 0 4px;">Hondenschool PoHo VZW</strong><span class="sides right">BE 0869 886 793</span></small>
       </div>
     `
   }

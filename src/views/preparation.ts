@@ -41,7 +41,7 @@ export class PreparationView extends LiteElement {
     return html`
     <flex-container>
       <post-element
-      image="./img/canvas.svg"
+      image="./img/belangrijk.png"
       headline="Voorlichting"
       subline="Wat je moet weten VOORDAT je voor het eerst het terrein betreedt."
       content="Beloning: Zoals de naam van onze hondenschool (POsitieve HOndenopleiding) doet vermoeden werken we hier zoveel mogelijk door middel van positieve bekrachtiging/beloning. 
@@ -50,6 +50,7 @@ export class PreparationView extends LiteElement {
       ></post-element>
       <post-element
       headline="Voeding als beloning"
+      image="./img/snack.png"
       .content=${html`
                 De meeste honden zijn dol op voeding en zeer vaak is voeding dan ook de ideale beloning voor bij het trainen. 
                 Er is echter een groot verschil in wat jij goede voeding vindt en wat je hond goede voeding vindt.

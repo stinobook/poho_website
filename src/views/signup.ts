@@ -203,6 +203,9 @@ export class SignupView extends LiteElement {
       }
     }
     (!rules.checked) ? this.shadowRoot.querySelector('#rules2').classList.add('error') : this.shadowRoot.querySelector('#rules2').classList.remove('error')
+    if (!noError) {
+        this.shadowRoot.querySelector('.error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     if (noError) {
       let newMember: Member = {
         name: fields.filter(field => field.name === 'name')[0].value,
