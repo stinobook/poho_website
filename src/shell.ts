@@ -92,6 +92,9 @@ export class PoHoWebShell extends LiteElement {
         flex-grow: 1;
         flex-basis: 0;
       }
+      .right {
+        text-align: right;
+      }
       .signup {
         background-color: var(--md-sys-color-primary);
         color: var(--md-sys-color-on-primary);
@@ -212,6 +215,7 @@ export class PoHoWebShell extends LiteElement {
               name="Varia" route="varia"></custom-hover-menu-item>
           </custom-hover-menu>
 
+          <custom-hover-menu-item name="Thema-avonden" route="presentations"></custom-hover-menu-item>
           <custom-hover-menu-item name="Contact" route="contact"></custom-hover-menu-item>
           <custom-hover-menu-item class="signup" name="Inschrijven" route="signup"></custom-hover-menu-item>
         </flex-row>
@@ -287,6 +291,9 @@ export class PoHoWebShell extends LiteElement {
 
         <custom-hover-menu-item
           type="drawer"
+          name="Thema-avonden" route="presentations"></custom-hover-menu-item>
+        <custom-hover-menu-item
+          type="drawer"
           name="Contact" route="contact"></custom-hover-menu-item>
         <custom-hover-menu-item
           class="signup"
@@ -308,11 +315,12 @@ export class PoHoWebShell extends LiteElement {
         <iron-view route="iron"> </iron-view>
         <signup-view route="signup"> </signup-view>
         <rules-view route="rules"></rules-view>
+        <presentations-view route="presentations"></presentations-view>
         <contact-view route="contact"></contact-view>
         <varia-view route="varia"></varia-view>
       </custom-pages>
       <div class="footer">
-      <small><span class="sides">&copy; 2019-2025</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides"></span></small>
+      <small><span class="sides">&copy; 2019-2025</span><img alt="PoHo" src="./assets/icons/icon-32x32.png"><strong style="padding-left: 4px;">Hondenschool PoHo VZW</strong><span class="sides right">BE 0869 886 793</span></small>
       </div>
     `
   }
