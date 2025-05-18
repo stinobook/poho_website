@@ -83,14 +83,40 @@ export class HomeView extends LiteElement {
       ></post-element>
       <post-element
       image="./img/logo.png"
-      headline="Instructeur worden?"
-      subline="Bel 0477/523983 (Joke De Swaef)"
+      headline="Vacature: Vrijwillige Hondeninstructeur Gehoorzaamheid"
+      subline="Locatie: Hofstade bij Aalst"
       .content=${html`
-      <p>Hondenschool PoHo zijn deuren staan altijd open voor kandidaat-instructeurs (m/v/x)
-      die zeer goed kunnen omgaan met zowel mens als dier en die als hun hobby hondeneigenaars
-      willen wegwijs maken in de opvoeding en het positief trainen van de hond(en).
-      Begeleiding, opvolging en bijscholingen op regelmatige basis zijn verzekerd.</p>
-      <p>Indien interesse neem dan contact op met de leden van het bestuur.</p>
+        <strong>Uren:</strong> 3 uur per week, op woensdag- en vrijdagavond van 19.30u tot 21u<br/>
+        <strong>Type functie:</strong> Vrijwillig met vrijwilligersvergoeding</p>
+
+        <p>Ben jij een enthousiaste hondenliefhebber? Heb je plezier in het werken met mensen en hun viervoeters? Dan zijn wij op zoek naar jou!</p>
+
+        <p><strong>Wat ga je doen?</strong><br/>
+        Als vrijwillige instructeur geef je gehoorzaamheidstrainingen aan baasjes en hun honden, van beginners tot recreatief niveau.
+        Je begeleidt hen op een positieve, gestructureerde manier en zorgt ervoor dat elke les leerzaam en leuk is.</p>
+
+        <p><strong>Jouw taken:</strong><br/>
+        - Geven van wekelijkse gehoorzaamheidslessen op de pleinen van onze hondenschool<br/>
+        - Begeleiding van baas en hond<br/>
+        - Observeren van hondengedrag en bijsturen indien nodig<br/>
+        - Samenwerken met collega-instructeurs en bestuur</p>
+
+        <p><strong>Wie ben jij?</strong><br/>
+        - Je hebt ervaring met hondentraining (opleiding of praktijk)<br/>
+        - Je staat stevig in je schoenen en communiceert duidelijk<br/>
+        - Je werkt graag met mensen én honden<br/>
+        - Je bent betrouwbaar, geduldig en positief ingesteld<br/>
+        - Een diploma of certificaat in kynologie is een pre, maar geen vereiste</p>
+
+        <p><strong>Wat bieden wij?</strong><br/>
+        - Een gezellige, informele sfeer binnen een enthousiast team<br/>
+        - Mogelijkheid tot (bij)scholing of cursussen<br/>
+        - Veel voldoening uit het begeleiden van honden en hun baasjes<br/>
+        - Waardering, erkenning en een hoop hondenknuffels!<br/>
+        - Bij de opstart individuele begeleiding door onze ervaringsdeskundigen</p>
+
+        <p><strong>Interesse?</strong><br/>
+        Stuur een korte motivatie en eventueel je ervaring naar <a href="mailto:joke.deswaef@telenet.be">joke.deswaef@telenet.be</a></p>
       `}
       ></post-element>
     </flex-container>
