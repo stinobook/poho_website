@@ -63,13 +63,8 @@ export class HomeView extends LiteElement {
         <li>Opvoedingstips: maandag 12 januari 2026 19u30</li>
         <li>Lichaamstaal van de hond: maandag 16 februari 2026 19u30</li>
       </ol>
-      <p>
-      Max. 30 personen per thema avond en minstens 10 dagen vooraf in te schrijven.
-      5 euro inschrijvingsgeld <strong>(met uitzondering van Thema 1 hier is een extra kost van 12€ voor het materiaal (17€))</strong> te storten op bankrekeningnr. BE88 7370 1345 3741
-      met vermelding “inschrijving thema-avond + naam en datum”.
-      </p>
-      <custom-button type="filled" label="Inschrijven">
-      <span slot="icon"><custom-icon icon="pen"></custom-icon></span>
+      <custom-button type="filled" @click=${() => location.hash = '!/presentations'} label="Thema-avonden">
+      <span slot="icon"><custom-icon icon="check"></custom-icon></span>
       </custom-button>
       `}
       ></post-element>

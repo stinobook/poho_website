@@ -268,8 +268,7 @@ export class ContactView extends LiteElement {
       `}
     .content=${html`
       <p>
-        Voor alle vragen en opmerkingen kan u steeds terecht bij een van onze bestuursleden. <br>
-        Joke De Swaef: 0477 / 523 983<br>
+        Voor alle vragen en opmerkingen kan u steeds terecht bij een van onze <a href="#!/organisation" @click=${() => location.hash = '!/organisation'}>bestuursleden.</a> <br>
         Als uw vraag <strong>niet dringend</strong> is, kan u steeds gebruik maken van onderstaand email formulier en iemand van PoHo zal u zo spoedig mogelijk terug contacteren.
       </p>
       <p>Open op <strong>woensdag</strong> en <strong>vrijdag</strong> vanaf <strong>19u45</strong>, tenzij anders gecommuniceerd via de home- of facebookpagina.</p>
