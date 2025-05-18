@@ -131,8 +131,8 @@ export class ContactView extends LiteElement {
   @property() accessor subject: string = '';
   @property() accessor message: string = '';
   @property() accessor successMessage: string = '';
-  @property() accessor errorMessage: string = 'Het contactformulier is even niet beschikbaar terwijl we naar een andere provider overschakelen. U kan ons steeds bereiken via joke.deswaef@telenet.be';
-  @property() accessor isSubmitting: boolean = true;
+  @property() accessor errorMessage: string = '';
+  @property() accessor isSubmitting: boolean = false;
 
   connectedCallback() {
     this.shadowRoot.addEventListener("submit", (event) => this.submitForm(event))
@@ -324,7 +324,7 @@ export class ContactView extends LiteElement {
         ></textarea>
         </label>
         <md-filled-button type="submit" ?disabled="${this.isSubmitting}">
-        ${this.isSubmitting ? 'Tijdelijk niet beschikbaar...' : 'Verzenden'} 
+        ${this.isSubmitting ? 'Verzenden...' : 'Verzenden'} 
         ${this.isSubmitting ? html`<span class="loading"></span>` : ''}
          </md-filled-button>
       </form>

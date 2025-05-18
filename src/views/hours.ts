@@ -51,7 +51,7 @@ export class HoursView extends LiteElement {
                   </tr>
                   <tr>
                     <td>Welpenklas</td>
-                    <td>20 u.</td>
+                    <td>20:15 u.</td>
                   </tr>
                   <tr>
                     <td>Pups</td>

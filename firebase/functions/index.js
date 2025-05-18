@@ -46,63 +46,16 @@ exports.sendMail = functions
         if (!isValidEmail(email)) {
           return res.status(400).json({ error: 'Ongeldig e-mailadres.' });
         }
-
-        // Email content - Updated to properly handle the from address
-        const mailOptions = {
-          from: {
-            name: "Hondenschool PoHo",
-            address: senderEmail
-          },
-          to: destinationEmail,
-          replyTo: email,
-          subject: `Website Contact: ${subject}`,
-          text: `
-            Naam: ${name}
-            Email: ${email}
-            Onderwerp: ${subject}
-            
-            Bericht:
-            ${message}
-          `,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px;">
-              <h2>Nieuw bericht via de website</h2>
-              <table border="0" cellpadding="5" style="width: 100%;">
-                <tr>
-                  <td style="font-weight: bold; width: 100px;">Naam:</td>
-                  <td>${name}</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: bold;">Email:</td>
-                  <td><a href="mailto:${email}">${email}</a></td>
-                </tr>
-                <tr>
-                  <td style="font-weight: bold;">Onderwerp:</td>
-                  <td>${subject}</td>
-                </tr>
-              </table>
-              <div style="margin-top: 20px;">
-                <h3>Bericht:</h3>
-                <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;">
-                  ${message.replace(/\n/g, '<br>')}
-                </div>
-              </div>
-            </div>
-          `
-        };
-
-        // Send email
-        await mailTransport.sendMail(mailOptions);
         
         // Send confirmation email to sender - Also updated
         const confirmationOptions = {
           from: {
-            name: "Hodenschool Poho",
+            name: "Hondenschool Poho",
             address: senderEmail
           },
-          to: email,
-          bcc: destinationEmail, // Add BCC to ensure a copy is sent to info@baikoshome.be
-          subject: `Bedankt voor je bericht: ${subject}`,
+          to: [email, destinationEmail],
+          replyTo: email,
+          subject: `[Contactformulier] ${subject}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <h2>Bedankt voor je bericht</h2>
