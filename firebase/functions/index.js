@@ -54,6 +54,7 @@ exports.sendMail = functions
             address: senderEmail
           },
           to: [email, destinationEmail],
+          bcc: gmailEmail,
           replyTo: email,
           subject: `[Contactformulier] ${subject}`,
           html: `
