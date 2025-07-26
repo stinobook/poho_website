@@ -140,13 +140,6 @@ async select(selected) {
     ></member-element>
     <member-element
     group="instructeurs"
-    image="./img/members/madeline.webp"
-    name="Madeline"
-    title="Allroundinstructeur recreanten"
-    class="hidden"
-    ></member-element>
-    <member-element
-    group="instructeurs"
     image="./img/members/dirk.webp"
     name="Dirk"
     title="Pups / Clickerinitiatie"
