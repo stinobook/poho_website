@@ -40,6 +40,17 @@ export class HomeView extends LiteElement {
   render() {
     return html`
     <flex-container>
+      <post-element
+      image="./img/luchtfoto.jpg"
+      headline="Welkom!"
+      .content=${html`
+      <p>Onze hondenschool bestaat meer dan 25 jaar en elke woensdag- en vrijdagavond geven wij gehoorzaamheidstrainingen.
+      Doch merken wij dat er daarnaast nog enorm veel vragen zijn en dit is de reden waarom wij onderstaande thema avonden organiseren.
+      Toekomstige hondeneigenaars of mensen die reeds een hond hebben dienen nog beter geïnformeerd te worden.<br/> <br/>
+      <strong class="larger">Onthaalmoment:</strong> Woensdag om 20u15.<br/>
+    <strong class="larger">Instappen eerste les:</strong> Na afspraak op onthaalmoment.</p>
+    `}
+      ></post-element>
     <post-element
         image="./img/eetfestijn.png"
         headline="Eetfestijn 2025"
@@ -72,17 +83,6 @@ export class HomeView extends LiteElement {
             </p>
         `}
         ></post-element>
-      <post-element
-      image="./img/luchtfoto.jpg"
-      headline="Welkom!"
-      .content=${html`
-      <p>Onze hondenschool bestaat meer dan 25 jaar en elke woensdag- en vrijdagavond geven wij gehoorzaamheidstrainingen.
-      Doch merken wij dat er daarnaast nog enorm veel vragen zijn en dit is de reden waarom wij onderstaande thema avonden organiseren.
-      Toekomstige hondeneigenaars of mensen die reeds een hond hebben dienen nog beter geïnformeerd te worden.<br/> <br/>
-      <strong class="larger">Onthaalmoment:</strong> Woensdag om 20u15.<br/>
-    <strong class="larger">Instappen eerste les:</strong> Na afspraak op onthaalmoment.</p>
-    `}
-      ></post-element>
       <post-element
       image="./img/thema-avonden.webp"
       headline="5 Thema-avonden"
