@@ -40,6 +40,38 @@ export class HomeView extends LiteElement {
   render() {
     return html`
     <flex-container>
+    <post-element
+        image="./img/eetfestijn.png"
+        headline="Eetfestijn 2025"
+        .content=${html`
+            <p>
+            Op <strong>zondag 16 november 2025</strong> organiseert Hondenschool POHO haar jaarlijks eetfestijn.<br/><br/>
+            Kom genieten van een heerlijke maaltijd en steun tegelijk onze hondenschool!
+            </p>
+
+            <p>
+            <strong>Locatie:</strong> St. Pauluszaal – Botermelkstraat 63B, 9300 Aalst<br/>
+            <strong>Tijd:</strong> 11u30 tot 15u
+            </p>
+
+            <p>
+            <strong>Menu:</strong><br/>
+            Zalmfilet – met saus naar keuze, slaatje en kroketjes (€23)<br/>
+            Varkenshaasje – met saus naar keuze, slaatje en kroketjes (€21)<br/>
+            Hertenragout – met slaatje van rauwe witloof en kroketjes (€23)<br/>
+            Voor de allerkleinsten: Balletjes in tomatensaus (€12)
+            </p>
+
+            <p>
+            Steunkaarten zijn verkrijgbaar aan €5 – elke bijdrage helpt ons enorm.<br/><br/>
+            <strong>Info en inschrijving </strong>via <a href="#!/contact" @click=${() => location.hash = '!/contact'}>contactformulier.</a> of bij onze leden.<br/>
+            </p>
+
+            <p>
+            Samen maken we er een gezellige en smakelijke dag van.
+            </p>
+        `}
+        ></post-element>
       <post-element
       image="./img/luchtfoto.jpg"
       headline="Welkom!"
