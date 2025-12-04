@@ -61,7 +61,6 @@ export class HomeView extends LiteElement {
         <li>Aanschaf van een hond: maandag 13 oktober 2025 19u30</li>
         <li>EHBO bij honden: donderdag 13 november 2025 19u30</li>
         <li>Opvoedingstips: maandag 12 januari 2026 19u30</li>
-        <li>Lichaamstaal van de hond: maandag 16 februari 2026 19u30</li>
       </ol>
       <custom-button type="filled" @click=${() => location.hash = '!/presentations'} label="Thema-avonden">
       <span slot="icon"><custom-icon icon="check"></custom-icon></span>
