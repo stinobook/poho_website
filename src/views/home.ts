@@ -52,22 +52,6 @@ export class HomeView extends LiteElement {
     `}
       ></post-element>
       <post-element
-      image="./img/thema-avonden.webp"
-      headline="5 Thema-avonden"
-      subline="Informatieavond over diverse onderwerpen"
-      .content=${html`
-      <ol>
-        <li>Workshop snuffelbal maken: donderdag 11 september 2025 19u30</li>
-        <li>Aanschaf van een hond: maandag 13 oktober 2025 19u30</li>
-        <li>EHBO bij honden: donderdag 13 november 2025 19u30</li>
-        <li>Opvoedingstips: maandag 12 januari 2026 19u30</li>
-      </ol>
-      <custom-button type="filled" @click=${() => location.hash = '!/presentations'} label="Thema-avonden">
-      <span slot="icon"><custom-icon icon="check"></custom-icon></span>
-      </custom-button>
-      `}
-      ></post-element>
-      <post-element
       image="./img/QRtrooper.webp"
       headline="Trooper"
       subline="Gratis steun voor onze hondenschool dankzij online-shopping"
