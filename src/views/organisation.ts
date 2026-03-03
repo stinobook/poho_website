@@ -111,13 +111,6 @@ async select(selected) {
     content="GSM: 0477/58 99 59"
     ></member-element>
     <member-element
-    group="bestuur"
-    image="./img/members/stijn.webp"
-    name="Stijn Schepers"
-    title="Bestuurslid"
-    content="GSM: 0488/46 04 07"
-    ></member-element>
-    <member-element
     group="instructeurs"
     image="./img/members/jokevdv.webp"
     name="Joke VdV"
